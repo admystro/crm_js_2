@@ -10,7 +10,7 @@
   <title>CRM</title>
 </head>
 
-<body>
+<body data-page="managers">
   <div class="main-wrapper">
     <header class="reporting-header bg-dark">
       <div class="container-fluid">
@@ -45,17 +45,17 @@
           <div class="col-12">
             <div class="card">
               <div class="user-action-container">
-                <div class="add-manager-form">
+                <form class="add-manager-form">
                   <div class="form-group input-group-container label-is">
-                    <input class="form-control" type="text" id="first_name" name="first_name" value="">
+                    <input class="form-control" type="text" id="first_name" name="name" value="" required>
                     <label for="first_name">Имя</label>
                   </div>
                   <div class="form-group input-group-container label-is">
-                    <input class="form-control" type="text" id="user_login" value="">
+                    <input class="form-control" type="text" id="user_login" name="login" value="" required>
                     <label for="user_login">Логин</label>
                   </div>
                   <div class="form-group input-group-container label-is">
-                    <input class="form-control" type="text" id="user_password" value="">
+                    <input class="form-control" type="text" id="user_password" name="password" value="" required>
                     <label for="user_password">Пароль</label>
                   </div>
                   <div class="btn-container btn btn-xl btn-primary">
@@ -63,7 +63,7 @@
                       <button id="add_btn">Добавить</button>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
               <div class="sorting-table table-1738836854514">
                 <div>
