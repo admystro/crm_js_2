@@ -1,13 +1,15 @@
-import { getData } from "./api/getData";
+import { getData } from "./api/getData.js";
+import { multiSelectOptions } from "./app/components.js";
 
 export const addedUsers = await getData(apiUrl.users)
-console.log("addedUsers: ", addedUsers);
+
 
 // чистим вывод
-resultTable.innerHTML = ''
+// resultTable.innerHTML = ''
 
 // выводим добавленных
 
-addedUsers.forEach(item => {
-  resultTable.innerHTML += addUsers(item)
-});
+// addedUsers.forEach(item => {
+//   resultTable.innerHTML += addUser(item)
+
+// });

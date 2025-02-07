@@ -1,4 +1,4 @@
-import { resultTable } from "../components.js";
+import { multiSelectOptions, resultTable } from "../components.js";
 
 export function viewManagerInfo(managerInfo) {
 
@@ -10,4 +10,7 @@ export function viewManagerInfo(managerInfo) {
       <td>${managerInfo.login}</td>
       <td>${date}</td>
     </tr>`;
+
+
+
 }
