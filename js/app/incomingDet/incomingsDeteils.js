@@ -14,8 +14,8 @@ export function incomingsDeteils(incomingDeteils) {
     <tr class="main-row js-main-row" style="cursor: pointer;">
       <td>${rowNumber}</td>
       <td>${date}</td>
-      <td>${comment};Супервайзер</td>
-      <td>${manager};Супервайзер</td>
+      <td>${comment}; Супервайзер</td>
+      <td>${manager}; Супервайзер</td>
       <td>USDT</td>
       <td class="text-end">${profit}</td>
       <td class="text-end">${managerComissions}</td>

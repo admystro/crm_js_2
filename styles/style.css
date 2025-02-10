@@ -100,6 +100,24 @@ ul[class] {
   right: .6rem;
   top: calc(50% - 6px);
   width: 16px;
+
+}
+
+
+.day-picker-wrap:after {
+  background-image: url(../sources/arrow-down.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  height: 12px;
+  pointer-events: none;
+  position: absolute;
+  right: .6rem;
+  top: calc(50% - 6px);
+  width: 16px;
+  z-index: 10;
+
 }
 
 .nav-tabs .nav-link.active {
