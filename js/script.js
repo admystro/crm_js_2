@@ -1,4 +1,4 @@
-import { body } from "./app/components.js";
+import { body } from "./app/Elements/elements.js";
 import { mainInit } from "./app/main/mainInit.js";
 import { managersInit } from "./app/managers/managersInit.js";
 

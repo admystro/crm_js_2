@@ -8,3 +8,7 @@ export const multiSelectOptions = document.querySelector('.select-options');
 
 export const selectInput = document.getElementById('select-input');
 export const selectInputContainer = document.querySelector('.select-input-container');
+
+export const addFormIncoming = document.getElementById('add-incoming-form');
+export const addManger = document.getElementById('add-manager');
+export const cardFoot = document.querySelector('.card-footer');

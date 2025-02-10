@@ -1,4 +1,4 @@
-import { apiUrl, getData } from "../../api/getData.js";
+import { apiUrl, getData } from "../../api/Data.js";
 import { viewManagerInfo } from "./viewManagerInfo.js";
 
 export async function viewManagers() {

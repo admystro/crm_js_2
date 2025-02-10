@@ -6,6 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Selectize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+    integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
   <link rel="stylesheet" href="./styles/style.css">
   <title>CRM</title>
 </head>
@@ -14,14 +23,13 @@
   <div class="main-wrapper">
     <header class="reporting-header bg-dark">
       <div class="container-fluid">
-        <nav class="navbar navbar-expand-md navbar-dark  bg-dark"><a class="navbar-brand"
-            href="https://admystro.github.io/crm_js/">Dream
+        <nav class="navbar navbar-expand-md navbar-dark  bg-dark"><a class="navbar-brand" href=#>Dream
             Team</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
             aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav m-auto">
-              <li class="nav-item"><a class="nav-link" href="https://admystro.github.io/crm_js/">Отчёты</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Отчёты</a></li>
               <li class="nav-item"><a class="nav-link" href="/statistics">Статистика</a></li>
               <li class="nav-item "><a class="nav-link" href="/salaries">Зарплаты</a></li>
               <li class="nav-item "><a class="nav-link" href="./pages/managers.html">Менеджеры</a></li>
@@ -124,7 +132,7 @@
                     <div role="tabpanel" id="nested-tabs-weekdays-tabpane-income"
                       aria-labelledby="nested-tabs-weekdays-tab-income" class="fade tab-pane active show">
                       <div>
-                        <div class="pt-3 pb-3">
+                        <form id="add-incoming-form" class="pt-3 pb-3">
                           <div class="d-flex justify-content-evenly form-row mb-2">
                             <div class="form-group date-picker-container"><label>Дата</label>
                               <div class="date-picker-wrapper">
@@ -134,49 +142,64 @@
                                 </div><span class="material-icons calendar-icon"></span>
                               </div>
                             </div>
-                            <div class="form-group"><label>Сумма выплаты</label><input type="number"
-                                class="form-control" value=""></div>
-                            <div class="form-group"><label>Валюта</label><select class="form-select">
+                            <div class="form-group">
+                              <label>Сумма выплаты</label>
+                              <input type="number" class="form-control" name="profit" value="">
+                            </div>
+                            <div class="form-group">
+                              <label>Валюта</label>
+                              <select name="currency" class="form-select">
                                 <option value="USDT_TRC20">USDT</option>
                                 <option value="BTC">BTC</option>
-                              </select></div>
-                            <div class="form-group"><label>Процент</label><input type="number" class="form-control"
-                                value="15"></div>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label>Процент</label>
+                              <input name="commonPercent" type="number" class="form-control" value="15">
+                            </div>
                           </div>
                           <div class="row">
-                            <div class="col"><label>Менеджеры</label></div>
-                            <div class="col-2"><label>% от профита</label></div>
-                            <div class="col"><label>Коментарий</label></div>
+                            <div class="col">
+                              <label>Менеджеры</label>
+                            </div>
+                            <div class="col-2">
+                              <label>% от профита</label>
+                            </div>
+                            <div class="col">
+                              <label>Коментарий</label>
+                            </div>
                             <div class="col-1">&nbsp;</div>
                           </div>
                           <div class="row mb-2">
                             <div class="col">
-                              <div id="select" class="select-container ">
-                                <div class="select-control">
-                                  <div class="select-options d-none"></div>
-                                  <div class="select-input-container">
-                                    <input id="select-input" class="select-input" type="text">
-                                  </div>
-
-                                </div>
-                              </div>
+                              <select name="manager" id="select-tools" multiple placeholder="Select..."></select>
                             </div>
-                            <div class="col-2"><input type="number" class="form-control" value=""></div>
-                            <div class="col"><input type="text" class="form-control" value=""></div>
-                            <div class="col-1 align-self-end"><button
-                                class="btn btn-md btn-danger d-flex align-items-center mx-auto" disabled=""><span
-                                  class="material-icons">delete</span></button></div>
+                            <div class="col-2">
+                              <input name="mangerPercent" type="number" class="form-control" value="">
+                            </div>
+                            <div class="col">
+                              <input name="comment" type="text" class="form-control" value="">
+                            </div>
+                            <div class="col-1 align-self-end">
+                              <button class="btn btn-md btn-danger d-flex align-items-center mx-auto" disabled="">
+                                <span class="material-icons">delete</span>
+                              </button>
+                            </div>
                           </div>
                           <div class="card-footer p-2">
                             <div class="d-flex align-items-center justify-content-center">
                               <p class="mx-2">Общий процент: 0 %</p>
-                              <div class="d-flex align-items-center mx-2"><button
-                                  class="btn btn-md btn-outline-secondary d-flex align-items-center mx-1"><span
-                                    class="material-icons">add</span></button></div><button
-                                class="btn btn-md btn-success mx-2 opacity-50">Добавить приход</button>
+                              <div class="d-flex align-items-center mx-2">
+                                <button id="add-manager"
+                                  class="btn btn-md btn-outline-secondary d-flex align-items-center mx-1">
+                                  <span class="material-icons">add</span>
+                                </button>
+                              </div>
+                              <button id="add-incoming" class="btn btn-md btn-success mx-2 custom-opacity-50">Добавить
+                                приход</button>
                             </div>
                           </div>
-                        </div>
+                        </form>
                         <div class="weekly-incomes-wrapper weekly-incomes-wrapper--additional mb-3">
                           <div class="table-container table-responsive table-fixed-height">
                             <table class="table table-hover">
@@ -446,7 +469,8 @@
     </footer>
   </div>
 
-
+  <!-- Selectize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>

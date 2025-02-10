@@ -1,4 +1,4 @@
-import { multiSelectOptions, resultTable } from "../components.js";
+import { resultTable } from "../Elements/elements.js";
 
 export function viewManagerInfo(managerInfo) {
 

@@ -1,6 +1,6 @@
-import { apiUrl, getData, postData } from "../../api/getData.js";
-import { resultTable } from "../components.js";
-import { viewManagerInfo } from "./viewManagerInfo.js";
+import { apiUrl, getData, postData } from "../../api/Data.js";
+import { viewManagerInfo } from "../managers/viewManagerInfo.js";
+
 
 export async function addUserEvent(event) {
   event.preventDefault();
@@ -24,6 +24,7 @@ export async function addUserEvent(event) {
   } else {
     alert("Користувач є і не можна добавляти");
   }
+  event.target.reset();
 
   // зробити вивід до таблиці в resultTable
   viewManagerInfo(managerInfo);
