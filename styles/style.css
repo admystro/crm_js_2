@@ -732,6 +732,7 @@ h5 {
   opacity: 0.5;
 }
 
-#datePicker {
+#datePicker,
+#datePicker2 {
   background: transparent;
 }
