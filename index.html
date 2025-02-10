@@ -144,7 +144,7 @@
                             </div>
                             <div class="form-group">
                               <label>Сумма выплаты</label>
-                              <input type="number" class="form-control" name="profit" value="">
+                              <input required type="number" class="form-control" name="profit" value="">
                             </div>
                             <div class="form-group">
                               <label>Валюта</label>
@@ -155,7 +155,7 @@
                             </div>
                             <div class="form-group">
                               <label>Процент</label>
-                              <input name="commonPercent" type="number" class="form-control" value="15">
+                              <input required name="commonPercent" type="number" class="form-control" value="15">
                             </div>
                           </div>
                           <div class="row">
@@ -172,13 +172,14 @@
                           </div>
                           <div class="row mb-2">
                             <div class="col">
-                              <select name="manager" id="select-tools" multiple placeholder="Select..."></select>
+                              <select required name="manager" id="select-tools" multiple
+                                placeholder="Select..."></select>
                             </div>
                             <div class="col-2">
-                              <input name="mangerPercent" type="number" class="form-control" value="">
+                              <input required name="mangerPercent" type="number" class="form-control" value="">
                             </div>
                             <div class="col">
-                              <input name="comment" type="text" class="form-control" value="">
+                              <input required name="comment" type="text" class="form-control" value="">
                             </div>
                             <div class="col-1 align-self-end">
                               <button class="btn btn-md btn-danger d-flex align-items-center mx-auto" disabled="">
