@@ -12,3 +12,5 @@ export const selectInputContainer = document.querySelector('.select-input-contai
 export const addFormIncoming = document.getElementById('add-incoming-form');
 export const addManger = document.getElementById('add-manager');
 export const cardFoot = document.querySelector('.card-footer');
+export const incomingTable = document.getElementById('incoming-table');
+export const sum = document.getElementById('sum');

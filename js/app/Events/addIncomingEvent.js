@@ -1,7 +1,10 @@
 import { apiUrl, postData } from "../../api/Data.js";
+import { incomingsDeteils } from "../incomingDet/incomingsDeteils.js";
+
 
 export async function addIncomingEvent(event) {
   event.preventDefault();
+
 
   // перевірити поля
   const dataForm = new FormData(event.target);
@@ -16,12 +19,16 @@ export async function addIncomingEvent(event) {
 
 
   //  добавити запис в базу
-  postData(apiUrl.incomings, incomingDeteils);
+  await postData(apiUrl.incomings, incomingDeteils);
   event.target.reset();
   // Очищаем Selectize select
   const selectizeControl = $('#select-tools')[0].selectize;
   if (selectizeControl) {
     selectizeControl.clear(); // очищает выбранные значения
   }
+
+  // виводимо до таблиці
+  incomingsDeteils(incomingDeteils);
+
 
 }
