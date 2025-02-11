@@ -1,19 +1,13 @@
 import { apiUrl, getData, postData } from "../../api/Data.js";
 import { viewManagerInfo } from "../managers/viewManagerInfo.js";
+import { formDataObj } from "../utils/utils.js";
 
 
 export async function addUserEvent(event) {
   event.preventDefault();
 
-  // перевірити поля
-  const dataForm = new FormData(event.target);
-
   // переформатувати
-  const managerInfo = {};
-
-  dataForm.forEach((val, key) => {
-    managerInfo[key] = val;
-  });
+  const managerInfo = formDataObj(event.target);
 
   // перевірити на дублікат
   const apiManagerInfo = await getData(apiUrl.existUser + managerInfo.name);

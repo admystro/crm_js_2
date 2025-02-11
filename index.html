@@ -21,6 +21,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
+  <link rel="stylesheet" href="./libs/toastify/toastify.css">
   <link rel="stylesheet" href="./styles/style.css">
   <title>CRM</title>
 </head>
@@ -195,34 +196,38 @@
                             </div>
                             <div class="col-1">&nbsp;</div>
                           </div>
-                          <div class="row mb-2">
-                            <div class="col ">
-                              <select required class="day-picker-wrap" name="manager" id="select-tools" multiple
-                                placeholder="Select..."></select>
+                          <div id="manager-list-fields">
+                            <div class="row mb-2">
+                              <div class="col ">
+                                <select required class="day-picker-wrap select-tools" name="manager[0][manager]"
+                                  multiple placeholder="Select..."></select>
 
-                            </div>
-                            <div class="col-2">
-                              <input required name="mangerPercent" type="number" class="form-control" value="">
-                            </div>
-                            <div class="col">
-                              <input required name="comment" type="text" class="form-control" value="">
-                            </div>
-                            <div class="col-1 align-self-end">
-                              <button class="btn btn-md btn-danger d-flex align-items-center mx-auto" disabled="">
-                                <span class="material-icons">delete</span>
-                              </button>
+                              </div>
+                              <div class="col-2">
+                                <input required name="manager[0]managerPercent" type="number"
+                                  class="form-control manager-percent" value="">
+                              </div>
+                              <div class="col">
+                                <input required name="manager[0][comment]" type="text" class="form-control" value="">
+                              </div>
+                              <div class="col-1 align-self-end">
+                                <button class="btn btn-md btn-danger d-flex align-items-center mx-auto" disabled="">
+                                  <span class="material-icons">delete</span>
+                                </button>
+                              </div>
                             </div>
                           </div>
                           <div class="card-footer p-2">
                             <div class="d-flex align-items-center justify-content-center">
-                              <p class="mx-2">Общий процент: 0 %</p>
+                              <p class="mx-2">Общий процент: <span id="sumManagerPersent">0%</span></p>
                               <div class="d-flex align-items-center mx-2">
-                                <button id="add-manager"
+                                <button type="button" id="add-manager"
                                   class="btn btn-md btn-outline-secondary d-flex align-items-center mx-1">
                                   <span class="material-icons">add</span>
                                 </button>
                               </div>
-                              <button id="add-incoming" class="btn btn-md btn-success mx-2 custom-opacity-50">Добавить
+                              <button type="submit" id="add-incoming"
+                                class="btn btn-md btn-success mx-2 custom-opacity-50">Добавить
                                 приход</button>
                             </div>
                           </div>
@@ -514,6 +519,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <script src="./libs/toastify/toastify.js"></script>
   <script type="module" src="./js/script.js"></script>
 </body>
 

@@ -1,24 +1,19 @@
-import { cardFoot } from "../Elements/elements.js";
+import { cardFoot, managerListFields } from "../Elements/elements.js";
+import { multiSelectEvent } from "./multiselectEvent.js";
 
 export function addManagerToForm() {
+
+
   const addedField = `
   <div class="row mb-2 manager-row">                             
     <div class="col">                               
-      <select name="manager" id="select-tools" multiple="multiple" placeholder="Select..." tabindex="-1" class="selectized" style="display: none;"></select>
-      <div class="selectize-control multi plugin-remove_button">
-        <div class="selectize-input items invalid not-full has-options">
-          <input type="select-multiple" autocomplete="new-password" autofill="no" tabindex="" id="select-tools-selectized" placeholder="Select..." style="width: 61.8125px;">
-        </div>
-        <div class="selectize-dropdown multi plugin-remove_button" style="display: none; width: 533.112px; top: 36.4px; left: 0px;">
-          <div class="selectize-dropdown-content" tabindex="-1"></div>
-        </div>
-      </div>                             
+      <select required class="day-picker-wrap select-tools" name="manager[${managerListFields.childElementCount}][manager]" multiple placeholder="Select..."></select>                            
     </div>                             
     <div class="col-2">                               
-      <input name="mangerPercent" type="number" class="form-control" value="">                             
+      <input name="manager[${managerListFields.childElementCount}][managerPercent]" type="number" class="form-control manager-percent" value="">                             
     </div>                             
     <div class="col">                               
-      <input name="comment" type="text" class="form-control" value="">                             
+      <input name="manager[${managerListFields.childElementCount}][comment]" type="text" class="form-control" value="">                             
     </div>                             
     <div class="col-1 align-self-end">                               
       <button type="button" class="btn btn-md btn-danger d-flex align-items-center mx-auto delete-manager">                                 
@@ -27,13 +22,25 @@ export function addManagerToForm() {
     </div>                           
   </div>`;
 
-  cardFoot.insertAdjacentHTML('beforebegin', addedField);
+  managerListFields.insertAdjacentHTML("beforeend", addedField);
 
-  // Добавляем обработчик для новой кнопки удаления
-  const lastAddedRow = cardFoot.previousElementSibling;
-  const deleteButton = lastAddedRow.querySelector('.delete-manager');
 
-  deleteButton.addEventListener('click', function () {
-    this.closest('.manager-row').remove();
+
+
+  multiSelectEvent();
+
+  // Add delete functionality to the newly added row
+  const deleteButtons = document.querySelectorAll('.delete-manager');
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', deleteManagerRow);
   });
+
+  // Add this new function to handle row deletion
+  function deleteManagerRow(event) {
+    // Get the parent row element and remove it
+    const managerRow = event.target.closest('.manager-row');
+    if (managerRow) {
+      managerRow.remove();
+    }
+  }
 }

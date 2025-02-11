@@ -12,5 +12,9 @@ export const selectInputContainer = document.querySelector('.select-input-contai
 export const addFormIncoming = document.getElementById('add-incoming-form');
 export const addManger = document.getElementById('add-manager');
 export const cardFoot = document.querySelector('.card-footer');
+export const managerListFields = document.querySelector('#manager-list-fields');
 export const incomingTable = document.getElementById('incoming-table');
 export const sum = document.getElementById('sum');
+
+export const sumManagerPersent = document.getElementById('sumManagerPersent');
+export const addIncomingBtn = document.getElementById('add-incoming');

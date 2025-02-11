@@ -1,13 +1,10 @@
-import { apiUrl, getData } from "../../api/Data.js";
+import { managers } from "./managerData.js";
 import { viewManagerInfo } from "./viewManagerInfo.js";
 
 export async function viewManagers() {
 
-  // отримуємо користувачів з API
-  const managerList = await getData(apiUrl.users);
-
   // Виводимо менеджерів до таблиці
-  managerList.forEach((manager) => {
+  managers.forEach((manager) => {
     viewManagerInfo(manager);
   });
 }
