@@ -1,36 +1,57 @@
 import { incomingTable } from "../Elements/elements.js";
+export const additionalRow = ''
 
 export function incomingsDeteils(incomingDeteils) {
-  const comment = incomingDeteils.comment
+  const managerList = incomingDeteils.manager
   const profit = incomingDeteils.profit
   const date = incomingDeteils.date
-  const managerComissions = Math.floor(incomingDeteils.profit * (incomingDeteils.mangerPercent / 100))
   const supervisorComissions = Math.floor(incomingDeteils.profit * 0.10)
-  const salary = supervisorComissions + managerComissions
+
   const rowNumber = incomingTable.rows.length + 1;
-  const manager = incomingDeteils.manager
-
-  manager.forEach(elem => {
-    const managerName = document.querySelector('.manager-name')
-    console.log("managerName: ", managerName);
-
-    // managerName.insertAdjacentText('afterend', elem.name)0
-    1
 
 
 
+  let manager = ''
+  let comment = ''
+  let managerTotalPercent = 0
+  let managersTotalComissons = 0
 
+  // для перевірки коментарів на дублікат
+  const uniqueComments = new Set();
+
+  managerList.forEach(elem => {
+    // добавляємо менеджерів в таблиці
+    manager += `${elem.manager}; `;
+
+    // перевіряємо коментарі на дублікат та добавляємо
+    if (elem.comment && !uniqueComments.has(elem.comment)) {
+      uniqueComments.add(elem.comment);
+      comment += `${elem.comment}; `;
+    }
+    // підраховуємо загальний процент менеджерів
+    managerTotalPercent += +elem.managerPercent
   });
+
+  // конвертуємо проценти в валюту
+  managersTotalComissons = Math.floor(profit * (managerTotalPercent / 100));
+  //  виводимо загльну ЗП 
+  const salary = supervisorComissions + managersTotalComissons;
+
+
+
+
+
+
 
   incomingTable.innerHTML += `
     <tr class="main-row js-main-row" style="cursor: pointer;">
       <td>${rowNumber}</td>
       <td>${date}</td>
-      <td class="manager-name">; Супервайзер</td>
-      <td>${manager}; Супервайзер</td>
+      <td>${comment}Супервайзер</td>
+      <td>${manager}Супервайзер</td>
       <td>USDT</td>
       <td class="text-end">${profit}</td>
-      <td class="text-end">${managerComissions}</td>
+      <td class="text-end">${managersTotalComissons}</td>
       <td class="text-end">${supervisorComissions}</td>
       <td class="text-end">${salary}</td>
       <td>
@@ -42,4 +63,9 @@ export function incomingsDeteils(incomingDeteils) {
   `;
 
 
+
 }
+
+
+
+

@@ -18,3 +18,5 @@ export const sum = document.getElementById('sum');
 
 export const sumManagerPersent = document.getElementById('sumManagerPersent');
 export const addIncomingBtn = document.getElementById('add-incoming');
+
+

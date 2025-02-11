@@ -7,13 +7,13 @@ export function viewBaseManagerPersent() {
 
   // Відбираємо всі проценти в менеджерів
   const managerListInputs = document.querySelectorAll('#add-incoming-form .manager-percent');
-  console.log("managerListInputs: ", managerListInputs);
+
 
   // Пройти по менеджерах, щоб повитягувати проценти
   let numMamagerPersent = 0;
   managerListInputs.forEach((managerInput) => {
     numMamagerPersent += Number(managerInput.value);
-    console.log("numMamagerPersent: ", numMamagerPersent);
+
   });
 
   // Вивожмо до сторінки процент
