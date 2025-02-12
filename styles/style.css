@@ -356,7 +356,11 @@ button:not(:disabled) {
 }
 
 .column-min-160 {
-  min-width: 160px;
+  min-width: 160px !important;
+}
+
+.column-min-140 {
+  min-width: 140px;
 }
 
 .table-success {
@@ -751,4 +755,9 @@ h5 {
 #datePicker,
 #datePicker2 {
   background: transparent;
+}
+
+.additional-row {
+  background-color: #dff5da;
+  font-size: 12px;
 }

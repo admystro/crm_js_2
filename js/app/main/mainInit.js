@@ -29,15 +29,11 @@ export function mainInit() {
     }
   }
 
+  // Обработчик клика теперь должен передавать элемент, по которому кликнули
   incomingTable.onclick = function (e) {
     const el = e.target;
     if (el) {
-      rowClickEvent()
+      rowClickEvent(el);
     }
-
-
-
-
-
   }
 }

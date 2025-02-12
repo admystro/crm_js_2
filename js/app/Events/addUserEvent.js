@@ -15,10 +15,33 @@ export async function addUserEvent(event) {
   if (apiManagerInfo == "Not found") {
     // добавити
     postData(apiUrl.users, managerInfo);
+
+    // чистимо форму 
+    event.target.reset();
+
+    // алерт успіх
+    Toastify({
+      text: `Пользователь успешно добавлен!`,
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)"
+      },
+      close: true,
+
+      duration: 3000
+    }).showToast();
+
   } else {
-    alert("Користувач є і не можна добавляти");
+    Toastify({
+      text: `Пользователь с таким именем существует!) `,
+      style: {
+        background: "linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))"
+      },
+      close: true,
+
+      duration: 3000
+    }).showToast();
   }
-  event.target.reset();
+
 
   // зробити вивід до таблиці в resultTable
   viewManagerInfo(managerInfo);

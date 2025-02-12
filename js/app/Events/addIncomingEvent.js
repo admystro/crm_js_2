@@ -10,11 +10,26 @@ export async function addIncomingEvent(event) {
   // відбираємо дані форми
   const incomingDeteils = formDataObj(event.target);
 
+  // робимо кастомну валідацію
+
+
   //  добавити запис в базу
   await postData(apiUrl.incomings, incomingDeteils);
 
   // Очищуємо дані форми
   event.target.reset();
+
+  // алерт успіх
+
+  Toastify({
+    text: `Приход успешно добавлен!`,
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)"
+    },
+    close: true,
+
+    duration: 3000
+  }).showToast();
 
   // Очищаем Selectize select
   const selectizeControl = $('select.select-tools')[0].selectize;
