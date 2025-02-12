@@ -4,7 +4,6 @@ import { addIncomingEvent } from "../Events/addIncomingEvent.js";
 import { addManagerToForm } from "../Events/addManagerToForm.js";
 import { multiSelectEvent } from "../Events/multiselectEvent.js";
 import { rowClickEvent } from "../Events/rowClickEvent.js";
-// import { rowClickEvent } from "../Events/rowClickEvent.js";
 import { viewBaseManagerPersent } from "../Events/viewBaseManagerPersent.js";
 import { incomingShow } from "../incomingDet/incomingShow.js";
 

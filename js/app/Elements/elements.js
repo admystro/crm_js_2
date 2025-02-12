@@ -14,7 +14,8 @@ export const addManger = document.getElementById('add-manager');
 export const cardFoot = document.querySelector('.card-footer');
 export const managerListFields = document.querySelector('#manager-list-fields');
 export const incomingTable = document.getElementById('incoming-table');
-export const sum = document.getElementById('sum');
+export const sum = document.querySelectorAll('.totalSum');
+export const sumManager = document.getElementById('sumManager');
 
 export const sumManagerPersent = document.getElementById('sumManagerPersent');
 export const addIncomingBtn = document.getElementById('add-incoming');

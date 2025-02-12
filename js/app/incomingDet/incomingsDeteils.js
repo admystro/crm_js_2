@@ -1,7 +1,7 @@
-import { incomingTable } from "../Elements/elements.js";
+import { incomingTable, sum } from "../Elements/elements.js";
 export let additionalRows = ``
 export let additionalSupervisorRow = ``
-
+let totalSum = 0
 export function incomingsDeteils(incomingDeteils) {
   const managerList = incomingDeteils.manager
   const profit = incomingDeteils.profit
@@ -17,6 +17,8 @@ export function incomingsDeteils(incomingDeteils) {
   let managerPercent = 0
   let managerTotalPercent = 0
   let managersTotalComissons = 0
+
+
 
   // для перевірки коментарів на дублікат
   const uniqueComments = new Set();
@@ -52,6 +54,8 @@ export function incomingsDeteils(incomingDeteils) {
   </tr>
 `
     addRowNum += 1;
+
+
 
   });
 
@@ -96,6 +100,8 @@ export function incomingsDeteils(incomingDeteils) {
       </td>
     </tr>
   `;
+
+
 
 
 
