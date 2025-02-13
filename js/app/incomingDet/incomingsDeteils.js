@@ -1,25 +1,23 @@
-import { incomingTable, sum } from "../Elements/elements.js";
-export let additionalRows = ``
-export let additionalSupervisorRow = ``
-let totalSum = 0
+import { incomingTable, supervisorPercent } from "../Elements/elements.js";
+import { setProcent } from "../utils/utils.js";
+
+export let totalManagerSum = 0; // Копілка для загольної комісій менеджерів
+export let totalSupervisorSum = 0; // Копілка для загольної комісій менеджерів
+export let totalSalarySum = 0; // Копілка для загольної ЗП
 export function incomingsDeteils(incomingDeteils) {
+  const { id, date, profit, manager: managerList, currency } = incomingDeteils; // Робимо змінні з ключів об'єкта
+
   const rowNumber = incomingTable.rows.length + 1; // Номер запрису таблиці
-  const date = incomingDeteils.date; // Дата запису
-  const profit = incomingDeteils.profit; // Вивід профіту
+
   let comment = ''; // заглушка для коментарів
   let manager = ''; // Заглушка для менеджерів
   let managerTotalPercent = 0; // Заглушка для загальних процентів менеджерів
-
-
-  // const managerList = incomingDeteils.manager
-
-  // let addRowNum = 1
 
   // для перевірки коментарів на дублікат
   const uniqueComments = new Set();
 
   // перебираємо менеджерів
-  managerList.forEach((elem, index) => {
+  managerList.forEach((elem) => {
 
     // перевіряємо коментарі на дублікат та добавляємо
     if (elem.comment && !uniqueComments.has(elem.comment)) {
@@ -32,61 +30,35 @@ export function incomingsDeteils(incomingDeteils) {
 
     // підраховуємо загальний процент менеджерів
     managerTotalPercent += Number(elem.managerPercent)
-
-    // // отримуємо процент менеджера
-    // managerPercent = elem.managerPercent;
-
-    //     // гереруємо деталі запису
-    //     additionalRows += `
-    //   <tr class="additional-row">
-    //     <td>${rowNumber}.${addRowNum}</td>
-    //     <td></td>
-    //     <td>${comment}</td>
-    //     <td>${elem.manager}</td>
-    //     <td></td>
-    //     <td class="text-end">${managerPercent}%</td>
-    //     <td class="text-end">${Math.floor(profit * (managerPercent / 100))}</td>
-    //     <td class="text-end"></td>
-    //     <td class="text-end">${Math.floor(profit * (managerPercent / 100))}</td>
-    //     <td></td>
-    //   </tr>
-    // `
-    //     addRowNum += 1;
+    totalManagerSum
   });
 
-  // // додаємо супервайзера
-  // additionalRows += `
-  //   <tr class="additional-row">
-  //   <td>${rowNumber}.${addRowNum}</td>
-  //   <td></td>
-  //   <td>Супервазйер</td>
-  //   <td>Супервазйер</td>
-  //   <td></td>
-  //   <td class="text-end">10%</td>
-  //   <td class="text-end"></td>
-  //   <td class="text-end">${supervisorComissions}</td>
-  //   <td class="text-end">${supervisorComissions}</td>
-  //   <td></td>
-  // </tr>
-  // `
-
   // конвертуємо проценти в валюту
-  const managersTotalComissons = Math.floor(profit * (managerTotalPercent / 100));
+  const managersTotalComissons = setProcent(profit, managerTotalPercent);
+
+
+
+
 
   // Комісяця супервайзера
-  const supervisorComissions = Math.floor(profit * 0.10)
+  const supervisorComissions = setProcent(profit, supervisorPercent)
 
   //  виводимо загльну ЗП 
   const salary = supervisorComissions + managersTotalComissons;
 
+  // наповнюємо копілку мнеджеріі та супервйзера
+  totalManagerSum += managersTotalComissons
+  totalSupervisorSum += supervisorComissions
+  totalSalarySum += salary
+
   // виводимо в таблицю
   incomingTable.innerHTML += `
-    <tr class="main-row js-main-row" data-main-row="${incomingDeteils.id}" style="cursor: pointer;">
+    <tr class="main-row js-main-row" data-main-row="${id}" data-row-number="${rowNumber}" style="cursor: pointer;">
       <td>${rowNumber}</td>
       <td>${date}</td>
       <td>${comment}; Супервайзер</td>
       <td>${manager}Супервайзер</td>
-      <td>USDT</td>
+      <td>${currency}</td>
       <td class="text-end">${profit}</td>
       <td class="text-end">${managersTotalComissons}</td>
       <td class="text-end">${supervisorComissions}</td>
@@ -98,6 +70,4 @@ export function incomingsDeteils(incomingDeteils) {
       </td>
     </tr>
   `;
-
-
 }

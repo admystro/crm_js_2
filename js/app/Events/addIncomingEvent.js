@@ -4,6 +4,9 @@ import { incomingsDeteils } from "../incomingDet/incomingsDeteils.js";
 import { formDataObj } from "../utils/utils.js";
 
 
+
+
+
 export async function addIncomingEvent(event) {
   event.preventDefault();
 
@@ -46,5 +49,8 @@ export async function addIncomingEvent(event) {
 
   // виводимо до таблиці
   incomingsDeteils(incomingDeteils);
+
+
+
 
 }

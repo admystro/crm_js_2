@@ -109,8 +109,8 @@
                         <tr>
                           <td>03-02-2025</td>
                           <td>07-02-2025</td>
-                          <td>0</td>
-                          <td>0</td>
+                          <td class="totalSum">0</td>
+                          <td class="sumSalary">0</td>
                           <td><b class="fw-bold text-primary">1&nbsp;000</b></td>
                           <td>0</td>
                           <td>0</td>
@@ -175,7 +175,7 @@
                             <div class="form-group">
                               <label>Валюта</label>
                               <select name="currency" class="form-select">
-                                <option value="USDT_TRC20">USDT</option>
+                                <option value="USDT">USDT</option>
                                 <option value="BTC">BTC</option>
                               </select>
                             </div>
@@ -204,7 +204,7 @@
 
                               </div>
                               <div class="col-2">
-                                <input required name="manager[0]managerPercent" type="number"
+                                <input required name="manager[0]managerPercent" type="text"
                                   class="form-control manager-percent" value="">
                               </div>
                               <div class="col">
@@ -255,9 +255,9 @@
                                   <td></td>
                                   <td></td>
                                   <td class="text-end totalSum"><b>0</b></td>
-                                  <td id="sumManager" class="text-end"><b>0</b></td>
-                                  <td class="text-end"><b>0</b></td>
-                                  <td class="text-end"><b>0</b></td>
+                                  <td class="text-end sumManager"><b>0</b></td>
+                                  <td class="text-end sumSupervisor"><b>0</b></td>
+                                  <td class="text-end sumSalary"><b>0</b></td>
                                   <td></td>
                                 </tr>
                               </thead>
@@ -273,9 +273,9 @@
                                   <td></td>
                                   <td></td>
                                   <td class="text-end totalSum"><b>0</b></td>
-                                  <td class="text-end"><b>0</b></td>
-                                  <td class="text-end"><b>0</b></td>
-                                  <td class="text-end"><b>0</b></td>
+                                  <td class="text-end sumManager"><b>0</b></td>
+                                  <td class="text-end sumSupervisor"><b>0</b></td>
+                                  <td class="text-end sumSalary"><b>0</b></td>
                                   <td></td>
                                 </tr>
                               </tfoot>

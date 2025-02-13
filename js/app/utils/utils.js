@@ -38,3 +38,10 @@ export function formatApiData(data) {
 
   return dataNew;
 }
+
+export function setProcent(profit, percent) {
+  const amount = Math.floor(profit * (percent / 100))
+
+  return amount;
+}
+

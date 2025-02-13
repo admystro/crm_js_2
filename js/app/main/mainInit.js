@@ -4,14 +4,17 @@ import { addIncomingEvent } from "../Events/addIncomingEvent.js";
 import { addManagerToForm } from "../Events/addManagerToForm.js";
 import { multiSelectEvent } from "../Events/multiselectEvent.js";
 import { showIncomingDeteils } from "../Events/showIncomingDeteils.js";
+import { showTotals } from "../Events/showTotals.js";
 import { viewBaseManagerPersent } from "../Events/viewBaseManagerPersent.js";
 import { incomingShow } from "../incomingDet/incomingShow.js";
 
 
 export function mainInit() {
-  multiSelectEvent() //
+  multiSelectEvent() // селект
   incomingShow() // Виводимо профіт в таблицю
-  dayPicker() // 
+  dayPicker() // календар
+  showTotals() // виводимо тотал
+
 
 
   addFormIncoming.onsubmit = addIncomingEvent

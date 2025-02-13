@@ -15,9 +15,13 @@ export const cardFoot = document.querySelector('.card-footer');
 export const managerListFields = document.querySelector('#manager-list-fields');
 export const incomingTable = document.getElementById('incoming-table');
 export const sum = document.querySelectorAll('.totalSum');
-export const sumManager = document.getElementById('sumManager');
+export const sumManager = document.querySelectorAll('.sumManager');
+export const sumSupervisor = document.querySelectorAll('.sumSupervisor');
+export const sumSalary = document.querySelectorAll('.sumSalary');
 
 export const sumManagerPersent = document.getElementById('sumManagerPersent');
 export const addIncomingBtn = document.getElementById('add-incoming');
+export const supervisorPercent = 10;
+
 
 

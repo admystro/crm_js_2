@@ -10,7 +10,7 @@ export function addManagerToForm() {
       <select required class="day-picker-wrap select-tools" name="manager[${managerListFields.childElementCount}][manager]" multiple placeholder="Select..."></select>                            
     </div>                             
     <div class="col-2">                               
-      <input name="manager[${managerListFields.childElementCount}][managerPercent]" type="number" class="form-control manager-percent" value="">                             
+      <input name="manager[${managerListFields.childElementCount}][managerPercent]" type="text" class="form-control manager-percent" value="">                             
     </div>                             
     <div class="col">                               
       <input name="manager[${managerListFields.childElementCount}][comment]" type="text" class="form-control" value="">                             
