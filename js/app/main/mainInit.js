@@ -3,15 +3,15 @@ import { addFormIncoming, addManger, incomingTable } from "../Elements/elements.
 import { addIncomingEvent } from "../Events/addIncomingEvent.js";
 import { addManagerToForm } from "../Events/addManagerToForm.js";
 import { multiSelectEvent } from "../Events/multiselectEvent.js";
-import { rowClickEvent } from "../Events/rowClickEvent.js";
+import { showIncomingDeteils } from "../Events/showIncomingDeteils.js";
 import { viewBaseManagerPersent } from "../Events/viewBaseManagerPersent.js";
 import { incomingShow } from "../incomingDet/incomingShow.js";
 
 
 export function mainInit() {
-  multiSelectEvent()
-  incomingShow()
-  dayPicker()
+  multiSelectEvent() //
+  incomingShow() // Виводимо профіт в таблицю
+  dayPicker() // 
 
 
   addFormIncoming.onsubmit = addIncomingEvent
@@ -30,9 +30,16 @@ export function mainInit() {
 
   // Обработчик клика теперь должен передавать элемент, по которому кликнули
   incomingTable.onclick = function (e) {
+
+    // Відбираємо елемент по якому був клік
     const el = e.target;
-    if (el) {
-      rowClickEvent(el);
+
+    // Пробуємо отримати батьвський елемент з класом main-row
+    const mainRow = el.closest('.main-row');
+
+    // Якщо це элемент, то відбираємо його додаткові атрибути
+    if (mainRow) {
+      showIncomingDeteils(mainRow);
     }
   }
 }

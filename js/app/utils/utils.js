@@ -26,3 +26,15 @@ export function formDataObj(form) {
 
   return incomingDetails;
 }
+
+
+// Переформатовування даниз API
+export function formatApiData(data) {
+  const dataNew = [];
+
+  data.forEach((dataItem) => {
+    dataNew[dataItem.id] = dataItem;
+  });
+
+  return dataNew;
+}

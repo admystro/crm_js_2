@@ -10,6 +10,7 @@ switch (page) {
   case 'home':
     mainInit();
     break;
+
   case 'managers':
     managersInit();
 
