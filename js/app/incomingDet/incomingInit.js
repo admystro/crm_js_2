@@ -5,7 +5,6 @@ import { incomingShow } from "./incomingShow.js";
 import { percentCheck } from "./event/percentCheck.js";
 import { showTotals } from "./event/showTotals.js";
 import { tableEvent } from "./event/tableEvent.js";
-import { deleteIncoming } from "./event/deleteIncoming.js";
 import { addIncomingEvent } from "./event/addIncomingEvent.js";
 import { addManagerToForm } from "./event/addManagerToForm.js";
 

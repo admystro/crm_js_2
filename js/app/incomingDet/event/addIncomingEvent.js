@@ -55,6 +55,6 @@ export async function addIncomingEvent(event) {
     const incomingsData = await getIncomingsDataFromApi(); // отримуємо дані з API
 
     showTotals(incomingsData) // виводимо тотал
-  }, 300)
+  }, 500)
 
 }
