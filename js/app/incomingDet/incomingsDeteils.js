@@ -64,7 +64,7 @@ export function incomingsDeteils(incomingDeteils) {
       <td class="text-end">${supervisorComissions}</td>
       <td class="text-end">${salary}</td>
       <td>
-        <button class="btn btn-danger btn-sm d-flex align-items-center mx-auto" title="Удалить" id="delete-button" style="padding: 3px 6px;">
+        <button class="btn btn-danger btn-sm d-flex align-items-center mx-auto delete-button " data-delete-row="${id}" title="Удалить" delete-button style="padding: 3px 6px;">
           <span class="material-icons" id="delete-icon" style="font-size: 22px;">delete</span>
         </button>
       </td>

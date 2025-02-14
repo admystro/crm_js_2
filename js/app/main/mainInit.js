@@ -2,6 +2,7 @@ import { dayPicker } from "../Elements/dayPicker.js";
 import { addFormIncoming, addManger, incomingTable } from "../Elements/elements.js";
 import { addIncomingEvent } from "../Events/addIncomingEvent.js";
 import { addManagerToForm } from "../Events/addManagerToForm.js";
+import { deleteIncoming } from "../Events/deleteIncoming.js";
 import { multiSelectEvent } from "../Events/multiselectEvent.js";
 import { showIncomingDeteils } from "../Events/showIncomingDeteils.js";
 import { showTotals } from "../Events/showTotals.js";
@@ -14,6 +15,7 @@ export function mainInit() {
   incomingShow() // Виводимо профіт в таблицю
   dayPicker() // календар
   showTotals() // виводимо тотал
+  // видаляємо запис про надходження
 
 
 
@@ -43,6 +45,8 @@ export function mainInit() {
     // Якщо це элемент, то відбираємо його додаткові атрибути
     if (mainRow) {
       showIncomingDeteils(mainRow);
+      deleteIncoming(mainRow)
+
     }
   }
 }

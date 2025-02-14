@@ -39,6 +39,7 @@ export function showIncomingDeteils(mainRow) {
 
   // Виводимо супервайзера
   mainRow.insertAdjacentHTML(
+
     "afterend",
     `
       <tr class="additional-row">
