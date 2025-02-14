@@ -3,6 +3,7 @@ import { dayPicker } from "../../Elements/dayPicker.js";
 import { incomingsDeteils } from "../incomingsDeteils.js";
 import { formDataObj } from "../../utils/utils.js";
 import { showTotals } from "./showTotals.js";
+import { getIncomingsDataFromApi } from "../incomingsData.js";
 
 
 
