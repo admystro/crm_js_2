@@ -1,4 +1,4 @@
-import { cardFoot, managerListFields } from "../Elements/elements.js";
+import { cardFoot, managerListFields } from "../../Elements/elements.js";
 import { multiSelectEvent } from "./multiselectEvent.js";
 
 export function addManagerToForm() {
@@ -26,7 +26,7 @@ export function addManagerToForm() {
 
 
 
-
+  // Оновлюємо select для нових полей
   multiSelectEvent();
 
   // Add delete functionality to the newly added row

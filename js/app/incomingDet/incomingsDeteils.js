@@ -1,9 +1,11 @@
 import { incomingTable, supervisorPercent } from "../Elements/elements.js";
 import { setProcent } from "../utils/utils.js";
+import { total } from "./incomingsData.js";
 
 export let totalManagerSum = 0; // Копілка для загольної комісій менеджерів
 export let totalSupervisorSum = 0; // Копілка для загольної комісій менеджерів
 export let totalSalarySum = 0; // Копілка для загольної ЗП
+
 export function incomingsDeteils(incomingDeteils) {
   const { id, date, profit, manager: managerList, currency } = incomingDeteils; // Робимо змінні з ключів об'єкта
 
@@ -30,7 +32,7 @@ export function incomingsDeteils(incomingDeteils) {
 
     // підраховуємо загальний процент менеджерів
     managerTotalPercent += Number(elem.managerPercent)
-    totalManagerSum
+
   });
 
   // конвертуємо проценти в валюту
@@ -47,9 +49,9 @@ export function incomingsDeteils(incomingDeteils) {
   const salary = supervisorComissions + managersTotalComissons;
 
   // наповнюємо копілку мнеджеріі та супервйзера
-  totalManagerSum += managersTotalComissons
-  totalSupervisorSum += supervisorComissions
-  totalSalarySum += salary
+  total.managerSum += managersTotalComissons
+  total.supervisorSum += supervisorComissions
+  total.salarySum += salary
 
   // виводимо в таблицю
   incomingTable.innerHTML += `
@@ -64,8 +66,12 @@ export function incomingsDeteils(incomingDeteils) {
       <td class="text-end">${supervisorComissions}</td>
       <td class="text-end">${salary}</td>
       <td>
-        <button class="btn btn-danger btn-sm d-flex align-items-center mx-auto delete-button " data-delete-row="${id}" title="Удалить" delete-button style="padding: 3px 6px;">
-          <span class="material-icons" id="delete-icon" style="font-size: 22px;">delete</span>
+        <button
+          class="btn btn-danger btn-sm d-flex align-items-center mx-auto delete-button"
+           title="Удалить" delete-button style="padding: 3px 6px;"
+          data-type="del"
+          data-id="${id}">
+          <span class="material-icons" id="delete-icon" style="font-size: 22px; pointer-events: none;">delete</span>
         </button>
       </td>
     </tr>

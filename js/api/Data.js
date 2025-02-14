@@ -19,8 +19,15 @@ export async function postData(url, data) {
 
 }
 
+export async function deleteData(url) {
+  await fetch(url, {
+    method: 'DELETE'
+  })
+}
+
 export const apiUrl = {
   users: 'https://67a368c131d0d3a6b7836f70.mockapi.io/users',
   existUser: 'https://67a368c131d0d3a6b7836f70.mockapi.io/users?name=',
   incomings: 'https://67a368c131d0d3a6b7836f70.mockapi.io/incomings',
 }
+

@@ -1,5 +1,5 @@
 import { body } from "./app/Elements/elements.js";
-import { mainInit } from "./app/main/mainInit.js";
+import { incomingInit } from "./app/incomingDet/incomingInit.js";
 import { managersInit } from "./app/managers/managersInit.js";
 
 // Отримуємо назву сторінку
@@ -8,7 +8,7 @@ const page = body.dataset.page;
 // Переключаємо режим сторінки
 switch (page) {
   case 'home':
-    mainInit();
+    incomingInit();
     break;
 
   case 'managers':

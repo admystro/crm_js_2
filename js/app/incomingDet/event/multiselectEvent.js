@@ -1,4 +1,4 @@
-import { managers } from "../managers/managerData.js";
+import { managers } from "../../managers/managerData.js";
 
 
 export async function multiSelectEvent() {

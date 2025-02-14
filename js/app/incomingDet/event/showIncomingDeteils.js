@@ -1,6 +1,6 @@
-import { incomingTable, sumManager, supervisorPercent } from "../Elements/elements.js";
-import { incomingsData } from "../incomingDet/incomingsData.js";
-import { setProcent } from "../utils/utils.js";
+import { incomingTable, sumManager, supervisorPercent } from "../../Elements/elements.js";
+import { incomingsData } from "../incomingsData.js";
+import { setProcent } from "../../utils/utils.js";
 
 
 

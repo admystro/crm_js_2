@@ -1,7 +1,8 @@
-import { apiUrl, postData } from "../../api/Data.js";
-import { dayPicker } from "../Elements/dayPicker.js";
-import { incomingsDeteils } from "../incomingDet/incomingsDeteils.js";
-import { formDataObj } from "../utils/utils.js";
+import { apiUrl, postData } from "../../../api/Data.js";
+import { dayPicker } from "../../Elements/dayPicker.js";
+import { incomingsDeteils } from "../incomingsDeteils.js";
+import { formDataObj } from "../../utils/utils.js";
+import { showTotals } from "./showTotals.js";
 
 
 
@@ -23,7 +24,6 @@ export async function addIncomingEvent(event) {
   event.target.reset();
 
   // алерт успіх
-
   Toastify({
     text: `Приход успешно добавлен!`,
     style: {
@@ -50,7 +50,11 @@ export async function addIncomingEvent(event) {
   // виводимо до таблиці
   incomingsDeteils(incomingDeteils);
 
+  // Оновити дані totals
+  setTimeout(async () => {
+    const incomingsData = await getIncomingsDataFromApi(); // отримуємо дані з API
 
-
+    showTotals(incomingsData) // виводимо тотал
+  }, 300)
 
 }

@@ -1,4 +1,4 @@
-import { addIncomingBtn, sumManagerPersent } from "../Elements/elements.js";
+import { addIncomingBtn, sumManagerPersent } from "../../Elements/elements.js";
 
 export function viewBaseManagerPersent() {
 

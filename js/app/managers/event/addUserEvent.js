@@ -1,6 +1,6 @@
-import { apiUrl, getData, postData } from "../../api/Data.js";
-import { viewManagerInfo } from "../managers/viewManagerInfo.js";
-import { formDataObj } from "../utils/utils.js";
+import { apiUrl, getData, postData } from "../../../api/Data.js";
+import { viewManagerInfo } from "../viewManagerInfo.js";
+import { formDataObj } from "../../utils/utils.js";
 
 
 export async function addUserEvent(event) {

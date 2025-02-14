@@ -1,5 +1,5 @@
 import { formAddManager } from "../Elements/elements.js";
-import { addUserEvent } from "../Events/addUserEvent.js";
+import { addUserEvent } from "./event/addUserEvent.js";
 import { viewManagers } from "./viewManagers.js";
 
 export function managersInit() {
