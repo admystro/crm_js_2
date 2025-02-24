@@ -38,7 +38,16 @@ export async function deleteIncoming(el) {
     300);
 
 
-  // Видалити с таблиці
+  // алерт успіх
+  Toastify({
+    text: `Приход успешно удален добавлен!`,
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)"
+    },
+    close: true,
+
+    duration: 3000
+  }).showToast();
 
 
 }
