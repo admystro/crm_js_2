@@ -23,5 +23,15 @@ export const sumManagerPersent = document.getElementById('sumManagerPersent');
 export const addIncomingBtn = document.getElementById('add-incoming');
 export const supervisorPercent = 10;
 
+export const incomeNavBtn = document.getElementById('nested-tabs-weekdays-tab-income')
+export const expencesNavBtn = document.getElementById('nested-tabs-weekdays-tab-expense')
+export const withdrowalsNavBtn = document.getElementById('nested-tabs-weekdays-tab-withdrawal')
+export const salaryNavBtn = document.getElementById('nested-tabs-weekdays-tab-salary')
+
+export const incomeNavTab = document.getElementById('nested-tabs-weekdays-tabpane-income')
+export const expencesNavTab = document.getElementById('nested-tabs-weekdays-tabpane-expense')
+export const withdrowalsNavTab = document.getElementById('nested-tabs-weekdays-tabpane-withdrawal')
+export const salaryNavTab = document.getElementById('nested-tabs-weekdays-tabpane-salary')
+
 
 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../libs/toastify/toastify.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  <title>CRM</title>
+</head>
+
+<body data-page="managers">
+  <div class="main-wrapper">
+    <header class="reporting-header bg-dark">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark  bg-dark"><a class="navbar-brand" href='../index.html'>Dream
+            Team</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav m-auto">
+              <li class="nav-item"><a class="nav-link" href="../index.html">Отчёты</a></li>
+              <li class="nav-item"><a class="nav-link" href="./statistics.html">Статистика</a></li>
+              <li class="nav-item "><a class="nav-link active" href="./salaries.html">Зарплаты</a></li>
+              <li class="nav-item "><a class="nav-link" href="./managers.html">Менеджеры</a></li>
+              <li class="nav-item "><a class="nav-link" href="/change-password">Смена пароля</a></li>
+              <li class="nav-item "><a class="nav-link" href="/wallets">Кошельки</a></li>
+            </ul>
+            <div class="d-flex align-items-center gap-4">
+              <div class="theme-switcher form-check form-switch m-0 p-0"><input class="form-check-input m-0"
+                  type="checkbox" role="switch" id="flexSwitchCheckDefault"></div>
+              <div class="form-inline logout-button-container"><button class="btn btn-outline-success">Выход</button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-header d-flex align-items-center justify-content-center p-2">
+            <div class="date-picker-container d-flex align-items-center position-relative"><button
+                class="btn btn-md btn-primary me-1 pt-1 pb-1 m-0 mx-2">-</button>
+              <div class="position-relative mx-2"><input type="text" class="form-control" readonly="" value="01-02-2025"
+                  style="cursor: pointer; width: 160px; max-width: 100%; background-color: rgb(255, 255, 255);"></div>
+              <span class="mx-2"> =&gt; </span>
+              <div class="position-relative mx-2"><input type="text" class="form-control" readonly="" value="28-02-2025"
+                  style="cursor: pointer; width: 160px; max-width: 100%; background-color: rgb(255, 255, 255);"></div>
+              <button class="btn btn-md btn-primary me-1 pt-1 pb-1 m-0 mx-2">+</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive table-fixed-height table-fixed-height--salaries">
+              <table class="table table-hover mb-0" style="text-align: start;">
+                <thead>
+                  <tr>
+                    <th>Имя</th>
+                    <th class="column-w-140 text-end">Сумма в $</th>
+                    <th class="column-w-140 text-end">Сумма в грн</th>
+                  </tr>
+                  <tr class="table-success">
+                    <td><b>Всего</b></td>
+                    <td class="text-end"><b>1&nbsp;471</b></td>
+                    <td class="text-end"><b>&nbsp;757&nbsp;423</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Супервайзер</td>
+                    <td class="text-end">1&nbsp;389</td>
+                    <td class="text-end">&nbsp;302&nbsp;969</td>
+                  </tr>
+                  <tr>
+                    <td>Менеджер 1</td>
+                    <td class="text-end">497</td>
+                    <td class="text-end">20&nbsp;679</td>
+                  </tr>
+                  <tr>
+                    <td>Менеджер 2</td>
+                    <td class="text-end">497</td>
+                    <td class="text-end">20&nbsp;679</td>
+                  </tr>
+                  <tr>
+                    <td>Менеджер 3</td>
+                    <td class="text-end">193</td>
+                    <td class="text-end">8&nbsp;016</td>
+                  </tr>
+                  <tr>
+                    <td>Менеджер 4</td>
+                    <td class="text-end">2&nbsp;372</td>
+                    <td class="text-end">98&nbsp;622</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr class="">
+                    <td><b>Всего</b></td>
+                    <td class="text-end"><b>1&nbsp;471</b></td>
+                    <td class="text-end"><b>&nbsp;757&nbsp;423</b></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <footer class="footer bg-dark m-0">
+      <div class="container-fluid">
+        <ul class="m-0 p-4 d-flex align-items-center justify-content-center gap-4"
+          style="color: rgba(255, 255, 255, 0.55);">
+          <li>Курс BTC: 97&nbsp;634 $</li>
+          <li>Курс USD: 41.66 грн</li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="../libs/toastify/toastify.js"></script>
+  <script type="module" src="../js/script.js"></script>
+</body>
+
+</html>

@@ -86,6 +86,7 @@ ul[class] {
 
 .weekPicker-input-wrapper {
   position: relative;
+
 }
 
 .weekPicker-input-wrapper:after {
@@ -118,6 +119,11 @@ ul[class] {
   width: 16px;
   z-index: 10;
 
+}
+
+.weekpicker-group {
+  width: fit-content;
+  gap: 10px;
 }
 
 .nav-tabs .nav-link.active {

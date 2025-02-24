@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../libs/toastify/toastify.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  <title>CRM</title>
+</head>
+
+<body data-page="managers">
+  <div class="main-wrapper">
+    <header class="reporting-header bg-dark">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark  bg-dark"><a class="navbar-brand" href='../index.html'>Dream
+            Team</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav m-auto">
+              <li class="nav-item"><a class="nav-link" href="../index.html">Отчёты</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#">Статистика</a></li>
+              <li class="nav-item "><a class="nav-link" href="./salaries.html">Зарплаты</a></li>
+              <li class="nav-item "><a class="nav-link" href="./managers.html">Менеджеры</a></li>
+              <li class="nav-item "><a class="nav-link" href="/change-password">Смена пароля</a></li>
+              <li class="nav-item "><a class="nav-link" href="/wallets">Кошельки</a></li>
+            </ul>
+            <div class="d-flex align-items-center gap-4">
+              <div class="theme-switcher form-check form-switch m-0 p-0"><input class="form-check-input m-0"
+                  type="checkbox" role="switch" id="flexSwitchCheckDefault"></div>
+              <div class="form-inline logout-button-container"><button class="btn btn-outline-success">Выход</button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-header d-flex align-items-center justify-content-center p-2">
+            <div class="date-picker-container d-flex align-items-center position-relative flex-wrap"><button
+                class="btn btn-md btn-primary me-1 pt-1 pb-1 m-0 mx-2">-</button>
+              <div class="position-relative mx-2"><input type="text" class="form-control" readonly="" value="01-02-2025"
+                  style="cursor: pointer; width: 160px; max-width: 100%; background-color: rgb(255, 255, 255);"></div>
+              <span class="mx-2"> =&gt; </span>
+              <div class="position-relative mx-2"><input type="text" class="form-control" readonly="" value="28-02-2025"
+                  style="cursor: pointer; width: 160px; max-width: 100%; background-color: rgb(255, 255, 255);"></div>
+              <button class="btn btn-md btn-primary me-1 pt-1 pb-1 m-0 mx-2">+</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover" style="table-layout: fixed;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th class="">Сумма Приходов</th>
+                    <th>Сумма Расходов, крипто</th>
+                    <th>Сумма Выводов</th>
+                    <th>Результат за период</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>553&nbsp;886</td>
+                    <td>101&nbsp;437</td>
+                    <td>251&nbsp;370</td>
+                    <td class="text-primary"><b>201&nbsp;079</b></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item" role="presentation"><button type="button" id="reports-tabs-tab-reports" role="tab"
+                  data-rr-ui-event-key="reports" aria-controls="reports-tabs-tabpane-reports" aria-selected="true"
+                  class="nav-link active">Отчеты</button></li>
+              <li class="nav-item" role="presentation"><button type="button" id="reports-tabs-tab-income" role="tab"
+                  data-rr-ui-event-key="income" aria-controls="reports-tabs-tabpane-income" tabindex="-1"
+                  class="nav-link">Приходы</button></li>
+              <li class="nav-item" role="presentation"><button type="button" id="reports-tabs-tab-expenses" role="tab"
+                  data-rr-ui-event-key="expenses" aria-controls="reports-tabs-tabpane-expenses" tabindex="-1"
+                  class="nav-link">Расходы</button></li>
+              <li class="nav-item" role="presentation"><button type="button" id="reports-tabs-tab-payouts" role="tab"
+                  data-rr-ui-event-key="payouts" aria-controls="reports-tabs-tabpane-payouts" tabindex="-1"
+                  class="nav-link">Выводы</button></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" id="reports-tabs-tabpane-reports" aria-labelledby="reports-tabs-tab-reports"
+                class="fade tab-pane active show">
+                <div class="table-responsive table-fixed-height table-fixed-height--stats">
+                  <table class="table table-hover mb-0">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th class="column-w-120">Сдано</th>
+                        <th>C</th>
+                        <th>ПО</th>
+                        <th class="text-end">Приход</th>
+                        <th class="text-end">Зарплата</th>
+                        <th class="text-end">Расходы, нал</th>
+                        <th class="text-end">Расходы, крипто</th>
+                        <th class="text-end">Выводы</th>
+                        <th class="text-end">Результат</th>
+                        <th class="text-end">Остаток</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>17-02-2025 12:39</td>
+                        <td>15-02-2025</td>
+                        <td>16-02-2025</td>
+                        <td class="text-end">2&nbsp;738</td>
+                        <td class="text-end">&nbsp;185</td>
+                        <td class="text-end">0</td>
+                        <td class="text-end">0</td>
+                        <td class="text-end">1&nbsp;738</td>
+                        <td class="fw-bold text-end text-primary">0</td>
+                        <td class="text-end">2&nbsp;523</td>
+                      </tr>
+                      <tr>
+                        <td>17-02-2025 12:39</td>
+                        <td>10-02-2025</td>
+                        <td>14-02-2025</td>
+                        <td class="text-end">1&nbsp;395</td>
+                        <td class="text-end">&nbsp;349</td>
+                        <td class="text-end">5&nbsp;646</td>
+                        <td class="text-end">3&nbsp;613</td>
+                        <td class="text-end">1&nbsp;782</td>
+                        <td class="fw-bold text-end text-primary">0</td>
+                        <td class="text-end">&nbsp;523</td>
+                      </tr>
+                      <tr>
+                        <td>10-02-2025 11:53</td>
+                        <td>03-02-2025</td>
+                        <td>07-02-2025</td>
+                        <td class="text-end">1&nbsp;042</td>
+                        <td class="text-end">2&nbsp;761</td>
+                        <td class="text-end">1&nbsp;495</td>
+                        <td class="text-end">1&nbsp;361</td>
+                        <td class="text-end">9&nbsp;681</td>
+                        <td class="fw-bold text-end text-primary">0</td>
+                        <td class="text-end">2&nbsp;523</td>
+                      </tr>
+                      <tr>
+                        <td>10-02-2025 11:53</td>
+                        <td>08-02-2025</td>
+                        <td>09-02-2025</td>
+                        <td class="text-end">3&nbsp;766</td>
+                        <td class="text-end">7&nbsp;692</td>
+                        <td class="text-end">0</td>
+                        <td class="text-end">0</td>
+                        <td class="text-end">30&nbsp;766</td>
+                        <td class="fw-bold text-end text-primary">0</td>
+                        <td class="text-end">22&nbsp;523</td>
+                      </tr>
+                      <tr>
+                        <td>03-02-2025 12:47</td>
+                        <td>01-02-2025</td>
+                        <td>02-02-2025</td>
+                        <td class="text-end">1&nbsp;403</td>
+                        <td class="text-end">351</td>
+                        <td class="text-end">0</td>
+                        <td class="text-end">0</td>
+                        <td class="text-end">1&nbsp;403</td>
+                        <td class="fw-bold text-end text-primary">0</td>
+                        <td class="text-end">22&nbsp;523</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div role="tabpanel" id="reports-tabs-tabpane-income" aria-labelledby="reports-tabs-tab-income"
+                class="fade tab-pane">
+                <div class="weekly-incomes-wrapper weekly-incomes-wrapper--additional">
+                  <div class="table-container table-fixed-height table-fixed-height--stats table-responsive">
+                    <table class="table table-hover mb-0" cellspacing="5px" width="100%">
+                      <thead class="thead-light">
+                        <tr>
+                          <th>#</th>
+                          <th class="column-min-100">Дата</th>
+                          <th class="column-min-140">Комментарий</th>
+                          <th class="column-min-160">Менеджеры</th>
+                          <th class="column-w-100">Валюта</th>
+                          <th class="column-w-100 text-end">Сумма</th>
+                          <th class="column-w-100 text-end">Менеджеры</th>
+                          <th class="column-w-100 text-end">Клоузер</th>
+                          <th class="column-w-100 text-end">Зарплата</th>
+                        </tr>
+                        <tr class="table-success">
+                          <td></td>
+                          <td><b>Всего</b></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-end"><b>553&nbsp;886</b></td>
+                          <td class="text-end"><b>83&nbsp;083</b></td>
+                          <td class="text-end"><b>55&nbsp;389</b></td>
+                          <td class="text-end"><b>138&nbsp;472</b></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>1</td>
+                          <td>2025-02-01</td>
+                          <td>111; Клоузер</td>
+                          <td>Макс Ф; Серега; Свят ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;403</td>
+                          <td class="text-end">210</td>
+                          <td class="text-end">140</td>
+                          <td class="text-end">351</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>2</td>
+                          <td>2025-02-13</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Хасбик; Арсен ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;368</td>
+                          <td class="text-end">355</td>
+                          <td class="text-end">237</td>
+                          <td class="text-end">592</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>3</td>
+                          <td>2025-02-13</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Ваня Марьянка; Роман ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;735</td>
+                          <td class="text-end">410</td>
+                          <td class="text-end">274</td>
+                          <td class="text-end">684</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>4</td>
+                          <td>2025-02-13</td>
+                          <td>111; Клоузер</td>
+                          <td>Женя (Л) (нью); Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;011</td>
+                          <td class="text-end">152</td>
+                          <td class="text-end">101</td>
+                          <td class="text-end">253</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>5</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Хасбик; Арсен ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;532</td>
+                          <td class="text-end">230</td>
+                          <td class="text-end">153</td>
+                          <td class="text-end">383</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>6</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Коломоец; Руслан (О); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;790</td>
+                          <td class="text-end">569</td>
+                          <td class="text-end">379</td>
+                          <td class="text-end">948</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>7</td>
+                          <td>2025-02-17</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">9&nbsp;241</td>
+                          <td class="text-end">1&nbsp;386</td>
+                          <td class="text-end">924</td>
+                          <td class="text-end">2&nbsp;310</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>8</td>
+                          <td>2025-02-18</td>
+                          <td>111; Клоузер</td>
+                          <td>Давид; Лехас; Олег ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;943</td>
+                          <td class="text-end">291</td>
+                          <td class="text-end">194</td>
+                          <td class="text-end">486</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>9</td>
+                          <td>2025-02-19</td>
+                          <td>111; Клоузер</td>
+                          <td>Стугна; Хасбик; Настя (Ат); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;120</td>
+                          <td class="text-end">318</td>
+                          <td class="text-end">212</td>
+                          <td class="text-end">530</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>10</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Настя (Ат); Инна ИФ; Лёня; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;970</td>
+                          <td class="text-end">596</td>
+                          <td class="text-end">397</td>
+                          <td class="text-end">993</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>11</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Тор; Брык (Д); Максим (ИФ); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;575</td>
+                          <td class="text-end">536</td>
+                          <td class="text-end">358</td>
+                          <td class="text-end">894</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>12</td>
+                          <td>2025-02-17</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Хасбик; Арсен ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;973</td>
+                          <td class="text-end">296</td>
+                          <td class="text-end">197</td>
+                          <td class="text-end">493</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>13</td>
+                          <td>2025-02-17</td>
+                          <td>111; Клоузер</td>
+                          <td>Богдан нью; Анастасия ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;025</td>
+                          <td class="text-end">154</td>
+                          <td class="text-end">103</td>
+                          <td class="text-end">256</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>14</td>
+                          <td>2025-02-19</td>
+                          <td>111; Клоузер</td>
+                          <td>Давид; Макс Ф; Нелли ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">8&nbsp;542</td>
+                          <td class="text-end">1&nbsp;281</td>
+                          <td class="text-end">854</td>
+                          <td class="text-end">2&nbsp;136</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>15</td>
+                          <td>2025-02-19</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Коломоец; Руслан (О); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">4&nbsp;951</td>
+                          <td class="text-end">743</td>
+                          <td class="text-end">495</td>
+                          <td class="text-end">1&nbsp;238</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>16</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Корчма; Хасбик; Роман ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;751</td>
+                          <td class="text-end">563</td>
+                          <td class="text-end">375</td>
+                          <td class="text-end">938</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>17</td>
+                          <td>2025-02-17</td>
+                          <td>111; Клоузер</td>
+                          <td>Хасбик; Заяц (Д); Максим (ИФ); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;224</td>
+                          <td class="text-end">184</td>
+                          <td class="text-end">122</td>
+                          <td class="text-end">306</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>18</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Давид; Макс Ф; Нелли ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">6&nbsp;824</td>
+                          <td class="text-end">1&nbsp;024</td>
+                          <td class="text-end">682</td>
+                          <td class="text-end">1&nbsp;706</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>19</td>
+                          <td>2025-02-12</td>
+                          <td>111; Клоузер</td>
+                          <td>Макс Ф; Максим (ИФ); Кристина ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;450</td>
+                          <td class="text-end">518</td>
+                          <td class="text-end">345</td>
+                          <td class="text-end">863</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>20</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Коломоец; Руслан (О); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;736</td>
+                          <td class="text-end">260</td>
+                          <td class="text-end">174</td>
+                          <td class="text-end">434</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>21</td>
+                          <td>2025-02-15</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Коломоец; Руслан (О); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">6&nbsp;668</td>
+                          <td class="text-end">1&nbsp;000</td>
+                          <td class="text-end">667</td>
+                          <td class="text-end">1&nbsp;667</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>22</td>
+                          <td>2025-02-15</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">6&nbsp;070</td>
+                          <td class="text-end">911</td>
+                          <td class="text-end">607</td>
+                          <td class="text-end">1&nbsp;518</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>23</td>
+                          <td>2025-02-10</td>
+                          <td>111; Клоузер</td>
+                          <td>Хасбик; Заяц (Д); Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">8&nbsp;643</td>
+                          <td class="text-end">1&nbsp;296</td>
+                          <td class="text-end">864</td>
+                          <td class="text-end">2&nbsp;161</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>24</td>
+                          <td>2025-02-17</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Коломоец; Руслан (О); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">6&nbsp;354</td>
+                          <td class="text-end">953</td>
+                          <td class="text-end">635</td>
+                          <td class="text-end">1&nbsp;589</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>25</td>
+                          <td>2025-02-17</td>
+                          <td>111; Клоузер</td>
+                          <td>Хасбик; Заяц (Д); Максим (ИФ); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;329</td>
+                          <td class="text-end">199</td>
+                          <td class="text-end">133</td>
+                          <td class="text-end">332</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>26</td>
+                          <td>2025-02-17</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Коломоец; Руслан (О); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;523</td>
+                          <td class="text-end">228</td>
+                          <td class="text-end">152</td>
+                          <td class="text-end">381</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>27</td>
+                          <td>2025-02-18</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">7&nbsp;605</td>
+                          <td class="text-end">1&nbsp;141</td>
+                          <td class="text-end">761</td>
+                          <td class="text-end">1&nbsp;901</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>28</td>
+                          <td>2025-02-18</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Сафрон; Олег ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;448</td>
+                          <td class="text-end">367</td>
+                          <td class="text-end">245</td>
+                          <td class="text-end">612</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>29</td>
+                          <td>2025-02-10</td>
+                          <td>111; Клоузер</td>
+                          <td>Хасбик; Брык (Д); Гера ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;544</td>
+                          <td class="text-end">382</td>
+                          <td class="text-end">254</td>
+                          <td class="text-end">636</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>30</td>
+                          <td>2025-02-10</td>
+                          <td>111; Клоузер</td>
+                          <td>Хасбик; Брык (Д); Гера ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;668</td>
+                          <td class="text-end">550</td>
+                          <td class="text-end">367</td>
+                          <td class="text-end">917</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>31</td>
+                          <td>2025-02-10</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Сафрон; Александр ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;856</td>
+                          <td class="text-end">578</td>
+                          <td class="text-end">386</td>
+                          <td class="text-end">964</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>32</td>
+                          <td>2025-02-11</td>
+                          <td>111; Клоузер</td>
+                          <td>Тор; Гера ИФ; Кристина ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;104</td>
+                          <td class="text-end">166</td>
+                          <td class="text-end">110</td>
+                          <td class="text-end">276</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>33</td>
+                          <td>2025-02-12</td>
+                          <td>111; Клоузер</td>
+                          <td>Тор; Гера ИФ; Кристина ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;200</td>
+                          <td class="text-end">180</td>
+                          <td class="text-end">120</td>
+                          <td class="text-end">300</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>34</td>
+                          <td>2025-02-12</td>
+                          <td>111; Клоузер</td>
+                          <td>Стугна; Влад Форекс; Настя (Ат); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;254</td>
+                          <td class="text-end">338</td>
+                          <td class="text-end">225</td>
+                          <td class="text-end">564</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>35</td>
+                          <td>2025-02-13</td>
+                          <td>111; Клоузер</td>
+                          <td>Тор; Радик К; Арсен ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;176</td>
+                          <td class="text-end">176</td>
+                          <td class="text-end">118</td>
+                          <td class="text-end">294</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>36</td>
+                          <td>2025-02-13</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">7&nbsp;172</td>
+                          <td class="text-end">1&nbsp;076</td>
+                          <td class="text-end">717</td>
+                          <td class="text-end">1&nbsp;793</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>37</td>
+                          <td>2025-02-03</td>
+                          <td>111; Клоузер</td>
+                          <td>Корчма; Радик К; Серега; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">5&nbsp;362</td>
+                          <td class="text-end">804</td>
+                          <td class="text-end">536</td>
+                          <td class="text-end">1&nbsp;341</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>38</td>
+                          <td>2025-02-03</td>
+                          <td>111; Клоузер</td>
+                          <td>Давид; Макс Ф; Алекс ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">5&nbsp;566</td>
+                          <td class="text-end">835</td>
+                          <td class="text-end">557</td>
+                          <td class="text-end">1&nbsp;392</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>39</td>
+                          <td>2025-02-03</td>
+                          <td>111; Клоузер</td>
+                          <td>Хасбик; Макс Ф; Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;295</td>
+                          <td class="text-end">344</td>
+                          <td class="text-end">230</td>
+                          <td class="text-end">574</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>40</td>
+                          <td>2025-02-04</td>
+                          <td>111; Клоузер</td>
+                          <td>Корчма; Радик К; Серега; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">6&nbsp;365</td>
+                          <td class="text-end">955</td>
+                          <td class="text-end">637</td>
+                          <td class="text-end">1&nbsp;591</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>41</td>
+                          <td>2025-02-04</td>
+                          <td>111; Клоузер</td>
+                          <td>Ваня Марьянка; Лёня; Кристина ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;411</td>
+                          <td class="text-end">212</td>
+                          <td class="text-end">141</td>
+                          <td class="text-end">353</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>42</td>
+                          <td>2025-02-04</td>
+                          <td>111; Клоузер</td>
+                          <td>Макс Ф; Сафрон; Роман ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">8&nbsp;001</td>
+                          <td class="text-end">1&nbsp;200</td>
+                          <td class="text-end">800</td>
+                          <td class="text-end">2&nbsp;000</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>43</td>
+                          <td>2025-02-04</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Красный; Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;865</td>
+                          <td class="text-end">430</td>
+                          <td class="text-end">287</td>
+                          <td class="text-end">716</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>44</td>
+                          <td>2025-02-05</td>
+                          <td>111; Клоузер</td>
+                          <td>Радик К; Серега; Руся; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">16&nbsp;228</td>
+                          <td class="text-end">2&nbsp;434</td>
+                          <td class="text-end">1&nbsp;623</td>
+                          <td class="text-end">4&nbsp;057</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>45</td>
+                          <td>2025-02-05</td>
+                          <td>111; Клоузер</td>
+                          <td>Окcана Ф; Сафрон; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;448</td>
+                          <td class="text-end">367</td>
+                          <td class="text-end">245</td>
+                          <td class="text-end">612</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>46</td>
+                          <td>2025-02-05</td>
+                          <td>111; Клоузер</td>
+                          <td>Алексей ИФ; Серега; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;541</td>
+                          <td class="text-end">531</td>
+                          <td class="text-end">354</td>
+                          <td class="text-end">885</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>47</td>
+                          <td>2025-02-06</td>
+                          <td>111; Клоузер</td>
+                          <td>Давид; Хасбик; Арсен ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">7&nbsp;915</td>
+                          <td class="text-end">1&nbsp;187</td>
+                          <td class="text-end">792</td>
+                          <td class="text-end">1&nbsp;979</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>48</td>
+                          <td>2025-02-06</td>
+                          <td>111; Клоузер</td>
+                          <td>Красный; Настя (Ат); Свят ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;493</td>
+                          <td class="text-end">374</td>
+                          <td class="text-end">249</td>
+                          <td class="text-end">623</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>49</td>
+                          <td>2025-02-07</td>
+                          <td>111; Клоузер</td>
+                          <td>Влад Форекс; Макс Ф; Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">11&nbsp;823</td>
+                          <td class="text-end">1&nbsp;773</td>
+                          <td class="text-end">1&nbsp;182</td>
+                          <td class="text-end">2&nbsp;956</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>50</td>
+                          <td>2025-02-07</td>
+                          <td>111; Клоузер</td>
+                          <td>Макс Ф; Лёня; Максим (ИФ); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">6&nbsp;631</td>
+                          <td class="text-end">995</td>
+                          <td class="text-end">663</td>
+                          <td class="text-end">1&nbsp;658</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>51</td>
+                          <td>2025-02-07</td>
+                          <td>111; Клоузер</td>
+                          <td>Хасбик; Серега; Алекс ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">4&nbsp;381</td>
+                          <td class="text-end">657</td>
+                          <td class="text-end">438</td>
+                          <td class="text-end">1&nbsp;095</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>52</td>
+                          <td>2025-02-07</td>
+                          <td>111; Клоузер</td>
+                          <td>Радик К; Серега; Нелли ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;717</td>
+                          <td class="text-end">558</td>
+                          <td class="text-end">372</td>
+                          <td class="text-end">929</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>53</td>
+                          <td>2025-02-08</td>
+                          <td>111; Клоузер</td>
+                          <td>Ваня Марьянка; Серега; Анастасия ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;981</td>
+                          <td class="text-end">447</td>
+                          <td class="text-end">298</td>
+                          <td class="text-end">745</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>54</td>
+                          <td>2025-02-08</td>
+                          <td>111; Клоузер</td>
+                          <td>Влад Форекс; Макс Ф; Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;054</td>
+                          <td class="text-end">458</td>
+                          <td class="text-end">305</td>
+                          <td class="text-end">764</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>55</td>
+                          <td>2025-02-08</td>
+                          <td>111; Клоузер</td>
+                          <td>Макс Ф; Алексей ИФ; Гера ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">24&nbsp;731</td>
+                          <td class="text-end">3&nbsp;710</td>
+                          <td class="text-end">2&nbsp;473</td>
+                          <td class="text-end">6&nbsp;183</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>56</td>
+                          <td>2025-02-12</td>
+                          <td>111; Клоузер</td>
+                          <td>Настя (Ат); Инна ИФ; Лёня; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">13&nbsp;489</td>
+                          <td class="text-end">2&nbsp;023</td>
+                          <td class="text-end">1&nbsp;349</td>
+                          <td class="text-end">3&nbsp;372</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>57</td>
+                          <td>2025-02-13</td>
+                          <td>111; Клоузер</td>
+                          <td>Макс Ф; Брык (Д); Роман ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">10&nbsp;437</td>
+                          <td class="text-end">1&nbsp;566</td>
+                          <td class="text-end">1&nbsp;044</td>
+                          <td class="text-end">2&nbsp;609</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>58</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">29&nbsp;137</td>
+                          <td class="text-end">4&nbsp;371</td>
+                          <td class="text-end">2&nbsp;914</td>
+                          <td class="text-end">7&nbsp;284</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>59</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Сафрон; Гера ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">17&nbsp;594</td>
+                          <td class="text-end">2&nbsp;639</td>
+                          <td class="text-end">1&nbsp;759</td>
+                          <td class="text-end">4&nbsp;399</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>60</td>
+                          <td>2025-02-14</td>
+                          <td>111; Клоузер</td>
+                          <td>Олег Маями; Корчма; Радик К; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">44&nbsp;379</td>
+                          <td class="text-end">6&nbsp;657</td>
+                          <td class="text-end">4&nbsp;438</td>
+                          <td class="text-end">11&nbsp;095</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>61</td>
+                          <td>2025-02-17</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">10&nbsp;088</td>
+                          <td class="text-end">1&nbsp;513</td>
+                          <td class="text-end">1&nbsp;009</td>
+                          <td class="text-end">2&nbsp;522</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>62</td>
+                          <td>2025-02-18</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">10&nbsp;234</td>
+                          <td class="text-end">1&nbsp;535</td>
+                          <td class="text-end">1&nbsp;023</td>
+                          <td class="text-end">2&nbsp;559</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>63</td>
+                          <td>2025-02-18</td>
+                          <td>111; Клоузер</td>
+                          <td>Макс Ф; Алексей ИФ; Гера ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">19&nbsp;167</td>
+                          <td class="text-end">2&nbsp;875</td>
+                          <td class="text-end">1&nbsp;917</td>
+                          <td class="text-end">4&nbsp;792</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>64</td>
+                          <td>2025-02-19</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Коломоец; Руслан (О); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">9&nbsp;129</td>
+                          <td class="text-end">1&nbsp;369</td>
+                          <td class="text-end">913</td>
+                          <td class="text-end">2&nbsp;282</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>65</td>
+                          <td>2025-02-19</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">19&nbsp;872</td>
+                          <td class="text-end">2&nbsp;981</td>
+                          <td class="text-end">1&nbsp;987</td>
+                          <td class="text-end">4&nbsp;968</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>66</td>
+                          <td>2025-02-19</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Корчма; Роман ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">4&nbsp;270</td>
+                          <td class="text-end">641</td>
+                          <td class="text-end">427</td>
+                          <td class="text-end">1&nbsp;068</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>67</td>
+                          <td>2025-02-19</td>
+                          <td>111; Клоузер</td>
+                          <td>Свят ИФ; Сафрон; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;297</td>
+                          <td class="text-end">195</td>
+                          <td class="text-end">130</td>
+                          <td class="text-end">324</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>68</td>
+                          <td>2025-02-19</td>
+                          <td>111; Клоузер</td>
+                          <td>Макс Ф; Максим (ИФ); Богдан нью; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">4&nbsp;523</td>
+                          <td class="text-end">678</td>
+                          <td class="text-end">452</td>
+                          <td class="text-end">1&nbsp;131</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>69</td>
+                          <td>2025-02-20</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Хасбик; Арсен ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">891</td>
+                          <td class="text-end">134</td>
+                          <td class="text-end">89</td>
+                          <td class="text-end">223</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>70</td>
+                          <td>2025-02-20</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">18&nbsp;703</td>
+                          <td class="text-end">2&nbsp;805</td>
+                          <td class="text-end">1&nbsp;870</td>
+                          <td class="text-end">4&nbsp;676</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>71</td>
+                          <td>2025-02-20</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">9&nbsp;816</td>
+                          <td class="text-end">1&nbsp;472</td>
+                          <td class="text-end">982</td>
+                          <td class="text-end">2&nbsp;454</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>72</td>
+                          <td>2025-02-20</td>
+                          <td>111; Клоузер</td>
+                          <td>Красный; Нелли ИФ; Гера ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">4&nbsp;010</td>
+                          <td class="text-end">602</td>
+                          <td class="text-end">401</td>
+                          <td class="text-end">1&nbsp;003</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>73</td>
+                          <td>2025-02-20</td>
+                          <td>111; Клоузер</td>
+                          <td>Олег ИФ; Радик К; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;275</td>
+                          <td class="text-end">191</td>
+                          <td class="text-end">128</td>
+                          <td class="text-end">319</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>74</td>
+                          <td>2025-02-20</td>
+                          <td>111; Клоузер</td>
+                          <td>Олег ИФ; Сафрон; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;432</td>
+                          <td class="text-end">215</td>
+                          <td class="text-end">143</td>
+                          <td class="text-end">358</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>75</td>
+                          <td>2025-02-20</td>
+                          <td>111; Клоузер</td>
+                          <td>Водное поло; Лехас; Нелли ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;381</td>
+                          <td class="text-end">207</td>
+                          <td class="text-end">138</td>
+                          <td class="text-end">345</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>76</td>
+                          <td>2025-02-20</td>
+                          <td>111; Клоузер</td>
+                          <td>Дима Волл; Тор; Вова; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">3&nbsp;529</td>
+                          <td class="text-end">529</td>
+                          <td class="text-end">353</td>
+                          <td class="text-end">882</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>77</td>
+                          <td>2025-02-21</td>
+                          <td>111; Клоузер</td>
+                          <td>Дима Волл; Тор; Вова; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;129</td>
+                          <td class="text-end">319</td>
+                          <td class="text-end">213</td>
+                          <td class="text-end">532</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>78</td>
+                          <td>2025-02-21</td>
+                          <td>111; Клоузер</td>
+                          <td>Иисус; Радик К; Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">8&nbsp;890</td>
+                          <td class="text-end">1&nbsp;334</td>
+                          <td class="text-end">889</td>
+                          <td class="text-end">2&nbsp;223</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>79</td>
+                          <td>2025-02-21</td>
+                          <td>111; Клоузер</td>
+                          <td>Стугна; Хасбик; Настя (Ат); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">9&nbsp;087</td>
+                          <td class="text-end">1&nbsp;363</td>
+                          <td class="text-end">909</td>
+                          <td class="text-end">2&nbsp;272</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>80</td>
+                          <td>2025-02-21</td>
+                          <td>111; Клоузер</td>
+                          <td>Серега; Максим (ИФ); Женя (Л) (нью); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">8&nbsp;201</td>
+                          <td class="text-end">1&nbsp;230</td>
+                          <td class="text-end">820</td>
+                          <td class="text-end">2&nbsp;050</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>81</td>
+                          <td>2025-02-21</td>
+                          <td>111; Клоузер</td>
+                          <td>Лехас; Красный; Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;025</td>
+                          <td class="text-end">154</td>
+                          <td class="text-end">103</td>
+                          <td class="text-end">256</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>82</td>
+                          <td>2025-02-21</td>
+                          <td>111; Клоузер</td>
+                          <td>Корчма; Максим (ИФ); Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;025</td>
+                          <td class="text-end">154</td>
+                          <td class="text-end">103</td>
+                          <td class="text-end">256</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>83</td>
+                          <td>2025-02-21</td>
+                          <td>111; Клоузер</td>
+                          <td>Настя (Ат); Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">1&nbsp;061</td>
+                          <td class="text-end">159</td>
+                          <td class="text-end">106</td>
+                          <td class="text-end">265</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>84</td>
+                          <td>2025-02-21</td>
+                          <td>111; Клоузер</td>
+                          <td>Лия; Макс Ф; Анастасия ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">8&nbsp;215</td>
+                          <td class="text-end">1&nbsp;232</td>
+                          <td class="text-end">822</td>
+                          <td class="text-end">2&nbsp;054</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>85</td>
+                          <td>2025-02-21</td>
+                          <td>111; Клоузер</td>
+                          <td>Корчма; Макс Ф; Анастасия ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">17&nbsp;439</td>
+                          <td class="text-end">2&nbsp;616</td>
+                          <td class="text-end">1&nbsp;744</td>
+                          <td class="text-end">4&nbsp;360</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>86</td>
+                          <td>2025-02-22</td>
+                          <td>111; Клоузер</td>
+                          <td>Дима Волл; Тор; Вова; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">5&nbsp;087</td>
+                          <td class="text-end">763</td>
+                          <td class="text-end">509</td>
+                          <td class="text-end">1&nbsp;272</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>87</td>
+                          <td>2025-02-22</td>
+                          <td>111; Клоузер</td>
+                          <td>Дима Волл; Тор; Вова; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;282</td>
+                          <td class="text-end">342</td>
+                          <td class="text-end">228</td>
+                          <td class="text-end">571</td>
+                        </tr>
+                        <tr class="main-row js-main-row" style="cursor: pointer;">
+                          <td>88</td>
+                          <td>2025-02-22</td>
+                          <td>111; Клоузер</td>
+                          <td>Свят ИФ; Инна ИФ; Клоузер</td>
+                          <td>USDT</td>
+                          <td class="text-end">2&nbsp;206</td>
+                          <td class="text-end">331</td>
+                          <td class="text-end">221</td>
+                          <td class="text-end">552</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr class="">
+                          <td></td>
+                          <td><b>Всего</b></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="text-end"><b>553&nbsp;886</b></td>
+                          <td class="text-end"><b>83&nbsp;083</b></td>
+                          <td class="text-end"><b>55&nbsp;389</b></td>
+                          <td class="text-end"><b>138&nbsp;472</b></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="reports-tabs-tabpane-expenses" aria-labelledby="reports-tabs-tab-expenses"
+                class="fade tab-pane">
+                <div class="table-responsive table-fixed-height table-fixed-height--stats">
+                  <table class="table table-hover mb-0" cellspacing="5px" width="100%">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>#</th>
+                        <th class="column-min-120">Дата</th>
+                        <th>Комментарий</th>
+                        <th class="column-w-100">Валюта</th>
+                        <th class="column-w-120 text-end">Сумма, Нал</th>
+                        <th class="column-w-120 text-end">Сумма, Crypto</th>
+                        <th class="column-w-120 text-end">Сумма, $</th>
+                      </tr>
+                      <tr class="table-success">
+                        <td></td>
+                        <td><b>Всего</b></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-end"><b>14&nbsp;982</b></td>
+                        <td class="text-end"><b>101&nbsp;437</b></td>
+                        <td class="text-end"><b>116&nbsp;419</b></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>2025-02-21</td>
+                        <td>телефония(экономика)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">2&nbsp;800</td>
+                        <td class="text-end">2&nbsp;800</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>2025-02-21</td>
+                        <td>телефония(лео)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">6&nbsp;540</td>
+                        <td class="text-end">6&nbsp;540</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>2025-02-21</td>
+                        <td>телефония(есим)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">3&nbsp;520</td>
+                        <td class="text-end">3&nbsp;520</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>2025-02-21</td>
+                        <td>база</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">410</td>
+                        <td class="text-end">410</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>2025-02-21</td>
+                        <td>покупка ТРХ</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">200</td>
+                        <td class="text-end">200</td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td>2025-02-21</td>
+                        <td>номера входящих звонков</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">568</td>
+                        <td class="text-end">568</td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>2025-02-21</td>
+                        <td>оплата охраны</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">4&nbsp;725</td>
+                        <td class="text-end">4&nbsp;725</td>
+                      </tr>
+                      <tr>
+                        <td>8</td>
+                        <td>2025-02-21</td>
+                        <td>аренда помещения</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">3&nbsp;700</td>
+                        <td class="text-end">3&nbsp;700</td>
+                      </tr>
+                      <tr>
+                        <td>9</td>
+                        <td>2025-02-21</td>
+                        <td>хоз. товары</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">1&nbsp;000</td>
+                        <td class="text-end">1&nbsp;000</td>
+                      </tr>
+                      <tr>
+                        <td>10</td>
+                        <td>2025-02-21</td>
+                        <td>ЗП айти</td>
+                        <td>USD</td>
+                        <td class="text-end">1&nbsp;050</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">1&nbsp;050</td>
+                      </tr>
+                      <tr>
+                        <td>11</td>
+                        <td>2025-02-21</td>
+                        <td>приз менеджеру</td>
+                        <td>USD</td>
+                        <td class="text-end">100</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">100</td>
+                      </tr>
+                      <tr>
+                        <td>12</td>
+                        <td>2025-02-21</td>
+                        <td>ставка ЗП</td>
+                        <td>USD</td>
+                        <td class="text-end">800</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">800</td>
+                      </tr>
+                      <tr>
+                        <td>13</td>
+                        <td>2025-02-21</td>
+                        <td>реклама</td>
+                        <td>USD</td>
+                        <td class="text-end">400</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">400</td>
+                      </tr>
+                      <tr>
+                        <td>14</td>
+                        <td>2025-02-21</td>
+                        <td>зарплата Жени</td>
+                        <td>USD</td>
+                        <td class="text-end">400</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">400</td>
+                      </tr>
+                      <tr>
+                        <td>15</td>
+                        <td>2025-02-21</td>
+                        <td>выплата менеджерам(новичкам)</td>
+                        <td>USD</td>
+                        <td class="text-end">150</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">150</td>
+                      </tr>
+                      <tr>
+                        <td>16</td>
+                        <td>2025-02-21</td>
+                        <td>аренда квартир</td>
+                        <td>USD</td>
+                        <td class="text-end">1&nbsp;350</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">1&nbsp;350</td>
+                      </tr>
+                      <tr>
+                        <td>17</td>
+                        <td>2025-02-21</td>
+                        <td>комиссия 1%</td>
+                        <td>USD</td>
+                        <td class="text-end">591</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">591</td>
+                      </tr>
+                      <tr>
+                        <td>18</td>
+                        <td>2025-02-17</td>
+                        <td>телефония(теле)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">6&nbsp;400</td>
+                        <td class="text-end">6&nbsp;400</td>
+                      </tr>
+                      <tr>
+                        <td>19</td>
+                        <td>2025-02-17</td>
+                        <td>озон</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">5&nbsp;600</td>
+                        <td class="text-end">5&nbsp;600</td>
+                      </tr>
+                      <tr>
+                        <td>20</td>
+                        <td>2025-02-14</td>
+                        <td>командировка</td>
+                        <td>USD</td>
+                        <td class="text-end">1&nbsp;000</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">1&nbsp;000</td>
+                      </tr>
+                      <tr>
+                        <td>21</td>
+                        <td>2025-02-14</td>
+                        <td>комиссия 1%</td>
+                        <td>USD</td>
+                        <td class="text-end">536</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">536</td>
+                      </tr>
+                      <tr>
+                        <td>22</td>
+                        <td>2025-02-14</td>
+                        <td>телефония(модерн)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">300</td>
+                        <td class="text-end">300</td>
+                      </tr>
+                      <tr>
+                        <td>23</td>
+                        <td>2025-02-14</td>
+                        <td>телефония(лео)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">6&nbsp;500</td>
+                        <td class="text-end">6&nbsp;500</td>
+                      </tr>
+                      <tr>
+                        <td>24</td>
+                        <td>2025-02-14</td>
+                        <td>база</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">990</td>
+                        <td class="text-end">990</td>
+                      </tr>
+                      <tr>
+                        <td>25</td>
+                        <td>2025-02-14</td>
+                        <td>озон</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">4&nbsp;600</td>
+                        <td class="text-end">4&nbsp;600</td>
+                      </tr>
+                      <tr>
+                        <td>26</td>
+                        <td>2025-02-14</td>
+                        <td>покупка ТРХ</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">200</td>
+                        <td class="text-end">200</td>
+                      </tr>
+                      <tr>
+                        <td>27</td>
+                        <td>2025-02-14</td>
+                        <td>продление ВПН</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">50</td>
+                        <td class="text-end">50</td>
+                      </tr>
+                      <tr>
+                        <td>28</td>
+                        <td>2025-02-14</td>
+                        <td>телефония(есим)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">4&nbsp;403</td>
+                        <td class="text-end">4&nbsp;403</td>
+                      </tr>
+                      <tr>
+                        <td>29</td>
+                        <td>2025-02-14</td>
+                        <td>оплата охраны</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">4&nbsp;725</td>
+                        <td class="text-end">4&nbsp;725</td>
+                      </tr>
+                      <tr>
+                        <td>30</td>
+                        <td>2025-02-14</td>
+                        <td>аренда помещения</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">3&nbsp;700</td>
+                        <td class="text-end">3&nbsp;700</td>
+                      </tr>
+                      <tr>
+                        <td>31</td>
+                        <td>2025-02-14</td>
+                        <td>хоз. товары</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">2&nbsp;400</td>
+                        <td class="text-end">2&nbsp;400</td>
+                      </tr>
+                      <tr>
+                        <td>32</td>
+                        <td>2025-02-14</td>
+                        <td>аренда квартир</td>
+                        <td>USD</td>
+                        <td class="text-end">1&nbsp;350</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">1&nbsp;350</td>
+                      </tr>
+                      <tr>
+                        <td>33</td>
+                        <td>2025-02-14</td>
+                        <td>ЗП айти</td>
+                        <td>USD</td>
+                        <td class="text-end">1&nbsp;050</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">1&nbsp;050</td>
+                      </tr>
+                      <tr>
+                        <td>34</td>
+                        <td>2025-02-14</td>
+                        <td>приз менеджеру</td>
+                        <td>USD</td>
+                        <td class="text-end">100</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">100</td>
+                      </tr>
+                      <tr>
+                        <td>35</td>
+                        <td>2025-02-14</td>
+                        <td>ставка ЗП</td>
+                        <td>USD</td>
+                        <td class="text-end">660</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">660</td>
+                      </tr>
+                      <tr>
+                        <td>36</td>
+                        <td>2025-02-14</td>
+                        <td>реклама</td>
+                        <td>USD</td>
+                        <td class="text-end">400</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">400</td>
+                      </tr>
+                      <tr>
+                        <td>37</td>
+                        <td>2025-02-14</td>
+                        <td>зарплата Жени</td>
+                        <td>USD</td>
+                        <td class="text-end">400</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">400</td>
+                      </tr>
+                      <tr>
+                        <td>38</td>
+                        <td>2025-02-10</td>
+                        <td>выплата менеджерам(новикам)</td>
+                        <td>USD</td>
+                        <td class="text-end">150</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">150</td>
+                      </tr>
+                      <tr>
+                        <td>39</td>
+                        <td>2025-02-10</td>
+                        <td>телефония(экономика)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">2&nbsp;000</td>
+                        <td class="text-end">2&nbsp;000</td>
+                      </tr>
+                      <tr>
+                        <td>40</td>
+                        <td>2025-02-10</td>
+                        <td>номера входящих звонков</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">645</td>
+                        <td class="text-end">645</td>
+                      </tr>
+                      <tr>
+                        <td>41</td>
+                        <td>2025-02-10</td>
+                        <td>телефония(теле)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">4&nbsp;100</td>
+                        <td class="text-end">4&nbsp;100</td>
+                      </tr>
+                      <tr>
+                        <td>42</td>
+                        <td>2025-02-07</td>
+                        <td>телефония(теле)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">7&nbsp;100</td>
+                        <td class="text-end">7&nbsp;100</td>
+                      </tr>
+                      <tr>
+                        <td>43</td>
+                        <td>2025-02-07</td>
+                        <td>телефония(лео)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">1&nbsp;720</td>
+                        <td class="text-end">1&nbsp;720</td>
+                      </tr>
+                      <tr>
+                        <td>44</td>
+                        <td>2025-02-07</td>
+                        <td>база</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">480</td>
+                        <td class="text-end">480</td>
+                      </tr>
+                      <tr>
+                        <td>45</td>
+                        <td>2025-02-07</td>
+                        <td>озон</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">3&nbsp;800</td>
+                        <td class="text-end">3&nbsp;800</td>
+                      </tr>
+                      <tr>
+                        <td>46</td>
+                        <td>2025-02-07</td>
+                        <td>покупка ТРХ</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">200</td>
+                        <td class="text-end">200</td>
+                      </tr>
+                      <tr>
+                        <td>47</td>
+                        <td>2025-02-07</td>
+                        <td>телефония(виннер)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">1&nbsp;200</td>
+                        <td class="text-end">1&nbsp;200</td>
+                      </tr>
+                      <tr>
+                        <td>48</td>
+                        <td>2025-02-07</td>
+                        <td>телефония(билли)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">100</td>
+                        <td class="text-end">100</td>
+                      </tr>
+                      <tr>
+                        <td>49</td>
+                        <td>2025-02-07</td>
+                        <td>номера входящих звонков</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">490</td>
+                        <td class="text-end">490</td>
+                      </tr>
+                      <tr>
+                        <td>50</td>
+                        <td>2025-02-07</td>
+                        <td>оплата охраны</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">4&nbsp;725</td>
+                        <td class="text-end">4&nbsp;725</td>
+                      </tr>
+                      <tr>
+                        <td>51</td>
+                        <td>2025-02-07</td>
+                        <td>аренда помещения</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">3&nbsp;700</td>
+                        <td class="text-end">3&nbsp;700</td>
+                      </tr>
+                      <tr>
+                        <td>52</td>
+                        <td>2025-02-07</td>
+                        <td>хоз расход</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">2&nbsp;400</td>
+                        <td class="text-end">2&nbsp;400</td>
+                      </tr>
+                      <tr>
+                        <td>53</td>
+                        <td>2025-02-07</td>
+                        <td>ЗП айти</td>
+                        <td>USD</td>
+                        <td class="text-end">950</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">950</td>
+                      </tr>
+                      <tr>
+                        <td>54</td>
+                        <td>2025-02-07</td>
+                        <td>приз менеджеру</td>
+                        <td>USD</td>
+                        <td class="text-end">200</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">200</td>
+                      </tr>
+                      <tr>
+                        <td>55</td>
+                        <td>2025-02-07</td>
+                        <td>реклама</td>
+                        <td>USD</td>
+                        <td class="text-end">400</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">400</td>
+                      </tr>
+                      <tr>
+                        <td>56</td>
+                        <td>2025-02-07</td>
+                        <td>зарплата Жени</td>
+                        <td>USD</td>
+                        <td class="text-end">400</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">400</td>
+                      </tr>
+                      <tr>
+                        <td>57</td>
+                        <td>2025-02-07</td>
+                        <td>оплата СРМ</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">200</td>
+                        <td class="text-end">200</td>
+                      </tr>
+                      <tr>
+                        <td>58</td>
+                        <td>2025-02-07</td>
+                        <td>аренда квартир</td>
+                        <td>USD</td>
+                        <td class="text-end">1&nbsp;350</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">1&nbsp;350</td>
+                      </tr>
+                      <tr>
+                        <td>59</td>
+                        <td>2025-02-03</td>
+                        <td>ставка ЗП</td>
+                        <td>USD</td>
+                        <td class="text-end">700</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">700</td>
+                      </tr>
+                      <tr>
+                        <td>60</td>
+                        <td>2025-02-03</td>
+                        <td>телефония(есим)</td>
+                        <td>USDT</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">5&nbsp;246</td>
+                        <td class="text-end">5&nbsp;246</td>
+                      </tr>
+                      <tr>
+                        <td>61</td>
+                        <td>2025-02-03</td>
+                        <td>комиссия 1%</td>
+                        <td>USD</td>
+                        <td class="text-end">345</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">345</td>
+                      </tr>
+                      <tr>
+                        <td>62</td>
+                        <td>2025-02-03</td>
+                        <td>выплата менеджерам(новичкам)</td>
+                        <td>USD</td>
+                        <td class="text-end">150</td>
+                        <td class="text-end"></td>
+                        <td class="text-end">150</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr class="">
+                        <td></td>
+                        <td><b>Всего</b></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-end"><b>14&nbsp;982</b></td>
+                        <td class="text-end"><b>101&nbsp;437</b></td>
+                        <td class="text-end"><b>116&nbsp;419</b></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+              <div role="tabpanel" id="reports-tabs-tabpane-payouts" aria-labelledby="reports-tabs-tab-payouts"
+                class="fade tab-pane">
+                <div class="table-responsive table-fixed-height table-fixed-height--stats">
+                  <table class="table table-hover mb-0" cellspacing="5px" width="100%">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>#</th>
+                        <th>Дата</th>
+                        <th class="column-w-140">Валюта</th>
+                        <th class="column-w-140 text-end">Сумма вывода</th>
+                        <th class="column-w-140 text-end">Курс</th>
+                        <th class="column-w-140 text-end">Комиссия</th>
+                      </tr>
+                      <tr class="table-success">
+                        <td></td>
+                        <td><b>Всего</b></td>
+                        <td></td>
+                        <td class="text-end"><b>251&nbsp;370</b></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>15-02-2025</td>
+                        <td>USDT</td>
+                        <td class="text-end">12&nbsp;738</td>
+                        <td class="text-end">1.00</td>
+                        <td class="text-end">0 %</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>10-02-2025</td>
+                        <td>USDT</td>
+                        <td class="text-end">146&nbsp;782</td>
+                        <td class="text-end">1.00</td>
+                        <td class="text-end">0 %</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>08-02-2025</td>
+                        <td>USDT</td>
+                        <td class="text-end">30&nbsp;766</td>
+                        <td class="text-end">1.00</td>
+                        <td class="text-end">0 %</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>07-02-2025</td>
+                        <td>USDT</td>
+                        <td class="text-end">59&nbsp;681</td>
+                        <td class="text-end">1.00</td>
+                        <td class="text-end">0 %</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>01-02-2025</td>
+                        <td>USDT</td>
+                        <td class="text-end">1&nbsp;403</td>
+                        <td class="text-end">1.00</td>
+                        <td class="text-end">0 %</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr class="">
+                        <td></td>
+                        <td><b>Всего</b></td>
+                        <td></td>
+                        <td class="text-end"><b>251&nbsp;370</b></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="alert alert-success d-none" role="alert"></div>
+            <div class="alert alert-danger d-none" role="alert"></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <footer class="footer bg-dark m-0">
+      <div class="container-fluid">
+        <ul class="m-0 p-4 d-flex align-items-center justify-content-center gap-4"
+          style="color: rgba(255, 255, 255, 0.55);">
+          <li>Курс BTC: 97&nbsp;634 $</li>
+          <li>Курс USD: 41.66 грн</li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="../libs/toastify/toastify.js"></script>
+  <script type="module" src="../js/script.js"></script>
+</body>
+
+</html>

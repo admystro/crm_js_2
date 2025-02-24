@@ -7,6 +7,7 @@ import { showTotals } from "./event/showTotals.js";
 import { tableEvent } from "./event/tableEvent.js";
 import { addIncomingEvent } from "./event/addIncomingEvent.js";
 import { addManagerToForm } from "./event/addManagerToForm.js";
+import { tabNavEvent } from "./event/tabNavEvent.js";
 
 
 export function incomingInit() {
@@ -16,6 +17,7 @@ export function incomingInit() {
   percentCheck()// перевірка процентів
   showTotals() // виводимо тотал
   tableEvent()// обробка кліку по таблиці
+  tabNavEvent() // наігація вкладок
 
   addFormIncoming.onsubmit = addIncomingEvent
   addManger.onclick = addManagerToForm

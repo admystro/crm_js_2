@@ -36,9 +36,9 @@
             aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav m-auto">
-              <li class="nav-item"><a class="nav-link" href="#">Отчёты</a></li>
-              <li class="nav-item"><a class="nav-link" href="/statistics">Статистика</a></li>
-              <li class="nav-item "><a class="nav-link" href="/salaries">Зарплаты</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#">Отчёты</a></li>
+              <li class="nav-item"><a class="nav-link" href="./pages/statistics.html">Статистика</a></li>
+              <li class="nav-item "><a class="nav-link" href="./pages/salaries.html">Зарплаты</a></li>
               <li class="nav-item "><a class="nav-link" href="./pages/managers.html">Менеджеры</a></li>
               <li class="nav-item "><a class="nav-link" href="/change-password">Смена пароля</a></li>
               <li class="nav-item "><a class="nav-link" href="/wallets">Кошельки</a></li>
@@ -79,8 +79,12 @@
                     <div class="d-flex align-items-center position-relative gap-4">
                       <div class="d-flex flex-column">
                         <label>Ведомость за</label>
-                        <div class="weekPicker-input-wrapper">
-                          <input type="text" class="form-control" id="datePicker2" />
+                        <div class="d-flex weekpicker-group">
+                          <div class="weekPicker-input-wrapper">
+                            <input type="text" class="form-control" id="datePicker2" />
+                          </div>
+                          <button class="btn btn-success">Выбрать неделю</button>
+                          <button class="btn btn-secondary">Текущая неделя</button>
                         </div>
                       </div>
                     </div>
@@ -297,7 +301,7 @@
                                 <div class="date-picker-wrapper">
                                   <div class="react-datepicker-wrapper">
                                     <div class="react-datepicker__input-container">
-                                      <input type="text" class="form-control" value="03.02.2025">
+                                      <input name="date" type="text" id="datePicker" class="form-control">
                                     </div>
                                   </div>
                                   <span class="material-icons calendar-icon">calendar_month</span>

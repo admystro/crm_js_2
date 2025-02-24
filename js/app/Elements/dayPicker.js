@@ -61,6 +61,8 @@ export function dayPicker() {
         // Форматируем и записываем в инпут выбранный диапазон
         const formattedSelectedDate = `${formatDate(monday)} - ${formatDate(sunday)}`;
         document.querySelector("#datePicker2").value = formattedSelectedDate;
+        // Добавляем закрытие календаря после установки даты
+        this.close();
       }
     },
     disableMobile: true // Отключаем мобильный интерфейс
