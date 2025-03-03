@@ -293,7 +293,7 @@
                     <div role="tabpanel" id="nested-tabs-weekdays-tabpane-expense"
                       aria-labelledby="nested-tabs-weekdays-tab-expense" class="fade tab-pane">
                       <div>
-                        <div class="card-header pt-3 pb-3">
+                        <form id="add-expenses-form" class="card-header pt-3 pb-3">
                           <div class="d-flex gap-3 mb-3">
                             <div class="form-group flex-fill w-25">
                               <label>Дата</label>
@@ -310,23 +310,24 @@
                             </div>
                             <div class="form-group flex-fill w-25">
                               <label>Название</label>
-                              <input type="text" placeholder="Название расхода" class="form-control" value="">
+                              <input name="name" type="text" placeholder="Название расхода" class="form-control" value="">
                             </div>
                             <div class="form-group flex-fill w-25">
                               <label>Сумма</label>
-                              <input type="number" placeholder="Сумма" class="form-control w-100" value="">
+                              <input name="value" type="number" placeholder="Сумма" class="form-control w-100" value="">
                             </div>
                             <div class="form-group flex-fill w-25">
                               <label>Валюта</label>
-                              <select class="form-select w-100">
+                              <select name="currency" class="form-select w-100">
                                 <option value="BTC">BTC</option>
                                 <option value="USD">$</option>
                                 <option value="USDT">USDT</option>
                                 <option value="UAH">грн</option>
                               </select>
                             </div>
-                          </div><button class="btn btn-success d-block mx-auto">Добавить расход</button>
-                        </div>
+                          </div>
+                          <button class="btn btn-success d-block mx-auto">Добавить расход</button>
+                        </form>
                         <div>
                           <div class="table-responsive table-fixed-height">
                             <table class="table table-hover mb-0">
@@ -347,12 +348,12 @@
                                   <td></td>
                                   <td></td>
                                   <td class="text-end"><b>0</b></td>
-                                  <td class="text-end"><b>0</b></td>
-                                  <td class="text-end"><b>0</b></td>
+                                  <td class="text-end total_crypto"><b>0</b></td>
+                                  <td class="text-end total_usd"><b>0</b></td>
                                   <td></td>
                                 </tr>
                               </thead>
-                              <tbody>
+                              <tbody id="expenses-table">
                                 <tr>
                                   <td colspan="8" class="text-center" style="height: 80px; vertical-align: middle;">Не
                                     найдено данных за выбранный период!</td>
@@ -365,8 +366,8 @@
                                   <td></td>
                                   <td></td>
                                   <td class="text-end"><b>0</b></td>
-                                  <td class="text-end"><b>0</b></td>
-                                  <td class="text-end"><b>0</b></td>
+                                  <td class="text-end total_crypto"><b>0</b></td>
+                                  <td class="text-end total_usd"><b>0</b></td>
                                   <td></td>
                                 </tr>
                               </tfoot>

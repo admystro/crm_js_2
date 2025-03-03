@@ -10,14 +10,18 @@ export const selectInput = document.getElementById('select-input');
 export const selectInputContainer = document.querySelector('.select-input-container');
 
 export const addFormIncoming = document.getElementById('add-incoming-form');
+export const addFormExpenses = document.getElementById('add-expenses-form');
 export const addManger = document.getElementById('add-manager');
 export const cardFoot = document.querySelector('.card-footer');
 export const managerListFields = document.querySelector('#manager-list-fields');
 export const incomingTable = document.getElementById('incoming-table');
+export const ExpensesTable = document.getElementById('expenses-table');
 export const sum = document.querySelectorAll('.totalSum');
 export const sumManager = document.querySelectorAll('.sumManager');
 export const sumSupervisor = document.querySelectorAll('.sumSupervisor');
 export const sumSalary = document.querySelectorAll('.sumSalary');
+export const totalUsd = document.querySelectorAll('.total_usd');
+export const totalCrypto= document.querySelectorAll('.total_crypto');
 
 export const sumManagerPersent = document.getElementById('sumManagerPersent');
 export const addIncomingBtn = document.getElementById('add-incoming');

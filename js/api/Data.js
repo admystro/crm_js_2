@@ -29,5 +29,6 @@ export const apiUrl = {
   users: 'https://67a368c131d0d3a6b7836f70.mockapi.io/users',
   existUser: 'https://67a368c131d0d3a6b7836f70.mockapi.io/users?name=',
   incomings: 'https://67a368c131d0d3a6b7836f70.mockapi.io/incomings',
+  expenses:   'https://67a368c131d0d3a6b7836f70.mockapi.io/expenses',
 }
 
